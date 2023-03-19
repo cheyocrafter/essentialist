@@ -3,8 +3,12 @@ export class PalindromeChecker {
     return word.split('').reverse().join('');
   }
 
+  stripSpaces(words: string): string {
+    return words.split(' ').join("");
+  }
+
   isPalindrome(word: string): boolean {
     const reversedWord = this.reverseString(word)
-    return reversedWord.toLowerCase().split(' ').join('') === word.toLowerCase().split(' ').join('');
+    return this.stripSpaces(reversedWord.toLowerCase()) === this.stripSpaces(word.toLowerCase());
   }
 }
