@@ -4,13 +4,13 @@
 
 ### Requirements 
 - GOAL: it should detect that a string is a palindrome
-- it should detect that the palindrome checker is defined
-- it should detect that "mom" is a palindrome
-- it should detect that "wow" is a palindrome
-- it should detect that "bill" is not a palindrome
-- it should detect that "Mom" is a palindrome and ignore the case 
-- it should detect that phrases with spaces like "Was It A Rat I Saw" are a palindrome
-- it should detect that phrases with spaces like "Never Odd or Even" are a palindrome
+- [X] it should detect that the palindrome checker is defined
+- [X] it should detect that "mom" is a palindrome
+- [ ] it should detect that "wow" is a palindrome
+- [ ] it should detect that "bill" is not a palindrome
+- [ ] it should detect that "Mom" is a palindrome and ignore the case 
+- [ ] it should detect that phrases with spaces like "Was It A Rat I Saw" are a palindrome
+- [ ] it should detect that phrases with spaces like "Never Odd or Even" are a palindrome
 
 ## Getting started
 
