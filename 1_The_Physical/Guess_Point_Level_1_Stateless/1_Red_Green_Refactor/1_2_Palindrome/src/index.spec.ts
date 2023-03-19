@@ -29,4 +29,9 @@ describe('palindrome checker', () => {
     const palindromeChecker = new PalindromeChecker();
     expect(palindromeChecker.isPalindrome("Was It A Rat I Saw")).toBeTruthy();
   });
+
+  it("should detect that 'Never Odd or Even' is a palindrome", () => {
+    const palindromeChecker = new PalindromeChecker();
+    expect(palindromeChecker.isPalindrome("Never Odd or Even")).toBeTruthy();
+  });
 });
