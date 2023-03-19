@@ -1,5 +1,6 @@
 export class PalindromeChecker {
   isPalindrome(word: string) {
-    return true;
+    const reversedWord = word.split('').reverse().join('');
+    return reversedWord === word;
   }
 }

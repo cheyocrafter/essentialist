@@ -14,4 +14,9 @@ describe('palindrome checker', () => {
     const palindromeChecker = new PalindromeChecker();
     expect(palindromeChecker.isPalindrome("wow")).toBeTruthy();
   });
+  
+  it("should detect that 'bill' is a palindrome", () => {
+    const palindromeChecker = new PalindromeChecker();
+    expect(palindromeChecker.isPalindrome("bill")).toBeFalsy();
+  });
 });
