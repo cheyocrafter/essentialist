@@ -9,4 +9,9 @@ describe('palindrome checker', () => {
     const palindromeChecker = new PalindromeChecker();
     expect(palindromeChecker.isPalindrome("mom")).toBeTruthy();
   });
+
+  it("should detect that 'wow' is a palindrome", () => {
+    const palindromeChecker = new PalindromeChecker();
+    expect(palindromeChecker.isPalindrome("wow")).toBeTruthy();
+  });
 });
