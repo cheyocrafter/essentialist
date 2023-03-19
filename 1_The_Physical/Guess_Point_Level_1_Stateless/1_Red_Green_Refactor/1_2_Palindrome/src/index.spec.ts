@@ -19,4 +19,9 @@ describe('palindrome checker', () => {
     const palindromeChecker = new PalindromeChecker();
     expect(palindromeChecker.isPalindrome("bill")).toBeFalsy();
   });
+  
+  it("should detect that 'bill' is a palindrome", () => {
+    const palindromeChecker = new PalindromeChecker();
+    expect(palindromeChecker.isPalindrome("Mom")).toBeTruthy();
+  });
 });
