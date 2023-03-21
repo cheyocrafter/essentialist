@@ -1,4 +1,4 @@
-import { PasswordValidator } from './index';
+import { PasswordValidator, PasswordValidationResult } from './index';
 
 describe('PasswordValidator', () => {
 
@@ -8,20 +8,21 @@ describe('PasswordValidator', () => {
   })
 
   it("should be defined", () => {
-    expect(PasswordValidator).toBeDefined()
+    expect(PasswordValidator).toBeDefined();
   });
 
   it("should return the correct error object if password length is between 5 and 15 charaters", () => {
-    const passwordValidationResult = {
+    const expected = {
       isValid: true,
       errors: []
     };
 
-    expect(passwordValidator.validate("pAssword1")).toEqual(passwordValidationResult)
+    const actual = passwordValidator.validate("pAssword1");
+    expect(actual).toEqual(expected);
   });
 
   it("should return the correct error object if the password length is less than 5 characters", () => {
-    const passwordValidationResult = {
+    const expected = {
       isValid: false,
       errors: [
         {
@@ -31,11 +32,12 @@ describe('PasswordValidator', () => {
       ]
     };
 
-    expect(passwordValidator.validate("pAs1")).toEqual(passwordValidationResult);
+    const actual = passwordValidator.validate("pAs1");
+    expect(actual).toEqual(expected);
   });
 
   it("should return the correct error object if the password length is greater than 15 characters", () => {
-    const passwordValidationResult = {
+    const expected = {
       isValid: false,
       errors: [
         { 
@@ -45,12 +47,13 @@ describe('PasswordValidator', () => {
       ]
     };
 
-    expect(passwordValidator.validate("passAsdlfkas1fkjalsdf")).toEqual(passwordValidationResult);
+    const actual = passwordValidator.validate("passAsdlfkas1fkjalsdf");
+    expect(actual).toEqual(expected);
   });
 
   
   it("should return the correct error object if password does not contain at least 1 digit", () => {
-    const passwordValidationError = {
+    const expected = {
       isValid: false, 
       errors: [
         {
@@ -60,11 +63,12 @@ describe('PasswordValidator', () => {
       ]
     }; 
 
-    expect(passwordValidator.validate("pAssword")).toEqual(passwordValidationError)
+    const actual = passwordValidator.validate("pAssword");
+    expect(expected).toEqual(actual);
   });
 
   it("should return the correct error object if password does not contain at least one uppercase letter", () => {
-    const passwordValidationError = {
+    const expected = {
       isValid: false, 
       errors: [
         {
@@ -74,11 +78,12 @@ describe('PasswordValidator', () => {
       ]
     }     
     
-    expect(passwordValidator.validate("password123456")).toEqual(passwordValidationError)
+    const actual = passwordValidator.validate("password123456");
+    expect(actual).toEqual(expected);
   });
 
   it("should return the correct error object if password does not meet any of the requirements", () => {
-    const passwordValidationError = {
+    const expected = {
       isValid: false, 
       errors: [
         {
@@ -96,7 +101,8 @@ describe('PasswordValidator', () => {
       ]
     }
     
-    expect(passwordValidator.validate("hey")).toEqual(passwordValidationError)
+    const actual = passwordValidator.validate("hey");
+    expect(actual).toEqual(expected);
   });
 });
 
