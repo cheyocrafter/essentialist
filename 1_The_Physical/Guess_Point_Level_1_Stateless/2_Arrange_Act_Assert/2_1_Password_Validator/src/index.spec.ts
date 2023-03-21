@@ -1,4 +1,4 @@
-import { PasswordValidator, PasswordValidationResult } from './index';
+import { PasswordValidator } from './index';
 
 describe('PasswordValidator', () => {
 
