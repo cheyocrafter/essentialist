@@ -9,11 +9,11 @@
 
 
 ### Requirements 
-- [ ] Write a class for validating passwords
+- [X] Write a class for validating passwords
   - [ ] Between 5 and 15 characters long:
   - [ ] Contains at least one digit
   - [ ] Contains at least one upper case letter
-  - [ ] Returns an object containing a boolean result and errors key that
+  - [ ] Returns an object containing a boolean result and errors key that:
     - [ ] When provided with an invalid password
       - [ ] contains an error message or type for all errors in occurrence
       * There can be multiple errors at a single line
