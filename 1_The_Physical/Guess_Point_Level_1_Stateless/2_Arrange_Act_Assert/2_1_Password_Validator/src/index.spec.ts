@@ -8,7 +8,11 @@ describe('PasswordValidator', () => {
   })
 
   it("should be defined", () => {
-    expect(PasswordValidator).toBeDefined();
+    // arrange
+    const actual = PasswordValidator; 
+
+    // act, assert
+    expect(actual).toBeDefined();
   });
 
   it("should return the correct error object if password length is between 5 and 15 charaters", () => {
