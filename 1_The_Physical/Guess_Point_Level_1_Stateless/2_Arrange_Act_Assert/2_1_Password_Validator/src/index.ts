@@ -5,7 +5,7 @@ export interface PasswordValidationResult {
 
 export class PasswordValidator {
   private isBetweenLengthConstraints(password: string) {
-    return password.length < 5 || password.length > 15;
+    return password.length >= 5 && password.length <= 15;
   }
 
   private hasDigit(password: string) {
@@ -22,7 +22,7 @@ export class PasswordValidator {
       errors: [] as {type: string, message: string}[]
     };
 
-    if (this.isBetweenLengthConstraints(password)) {
+    if (!this.isBetweenLengthConstraints(password)) {
       validationResult.errors.push({
         type: "PASSWORD_LENGTH_ERROR", 
         message: "password must be between 5 and 15 characters"
