@@ -96,37 +96,31 @@ describe('PasswordValidator', () => {
     const actual = passwordValidator.validate(password);
 
     // assert
-    expect(actual).toEqual(expected);
+    expect(actual.isValid).toBeDefined();
+    expect(actual.isValid).toBeFalsy();
+    expect(actual.errors.length).toBe(1);
+    expect(actual.errors[0].type).toMatch(/NO_UPPERCASE_LETTER_ERROR/);
+    expect(actual.errors[0].message).toMatch(/password must contain at least one uppercase letter/);
   });
 
   it("should return the correct error object if password does not meet any of the requirements", () => {
 
     // arrange
-    const expected = {
-      isValid: false, 
-      errors: [
-        {
-          type: "PASSWORD_LENGTH_ERROR", 
-          message: "password must be between 5 and 15 characters"
-        },
-        {
-          type: "NO_DIGITS_ERROR",
-          message: "password must contain at least 1 digit"
-        },
-        {
-          type: "NO_UPPERCASE_LETTER_ERROR", 
-          message: "password must contain at least one uppercase letter"
-        }
-      ]
-    }
-
     const password = "hey";
 
     // act
     const actual = passwordValidator.validate(password);
 
     // assert
-    expect(actual).toEqual(expected);
+    expect(actual.isValid).toBeDefined();
+    expect(actual.isValid).toBeFalsy(); 
+    expect(actual.errors.length).toBe(3);
+    expect(actual.errors[0].type).toMatch(/PASSWORD_LENGTH_ERROR/);
+    expect(actual.errors[0].message).toMatch(/password must be between 5 and 15 characters/);
+    expect(actual.errors[1].type).toMatch(/NO_DIGITS_ERROR/);
+    expect(actual.errors[1].message).toMatch(/password must contain at least 1 digit/);
+    expect(actual.errors[2].type).toMatch(/NO_UPPERCASE_LETTER_ERROR/);
+    expect(actual.errors[2].message).toMatch(/password must contain at least one uppercase letter/);
   });
 });
 
