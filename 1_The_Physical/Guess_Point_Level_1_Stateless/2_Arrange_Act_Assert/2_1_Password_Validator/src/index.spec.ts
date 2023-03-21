@@ -62,23 +62,20 @@ describe('PasswordValidator', () => {
   
   it("should return the correct error object if password does not contain at least 1 digit", () => {
     // arrange
-    const expected = {
-      isValid: false, 
-      errors: [
-        {
-          type: "NO_DIGITS_ERROR", 
-          message: "password must contain at least 1 digit"
-        }
-      ]
-    }; 
-
     const password = "pAssword";
 
     // act
     const actual = passwordValidator.validate(password);
 
     // assert
-    expect(expected).toEqual(actual);
+    expect(actual.isValid).toBeDefined();
+    expect(actual.isValid).toBeFalsy();
+    expect(actual.errors).toBeDefined();
+    expect(actual.errors.length).toBe(1);
+    expect(actual.errors[0].type).toBeDefined();
+    expect(actual.errors[0].type).toMatch(/NO_DIGITS_ERROR/);
+    expect(actual.errors[0].message).toBeDefined();
+    expect(actual.errors[0].message).toMatch(/password must contain at least 1 digit/);
   });
 
   it("should return the correct error object if password does not contain at least one uppercase letter", () => {
