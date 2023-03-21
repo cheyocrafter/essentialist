@@ -75,5 +75,26 @@ describe('PasswordValidator', () => {
     expect(passwordValidator.validate("password123456")).toEqual(passwordValidationError)
   });
 
+  it("should return the correct error object if password does not meet any of the requirements", () => {
+    const passwordValidationError = {
+      isValid: false, 
+      errors: [
+        {
+          type: "PASSWORD_LENGTH_ERROR", 
+          message: "password must be between 5 and 15 characters"
+        },
+        {
+          type: "NO_DIGITS_ERROR",
+          message: "password must contain at least 1 digit"
+        },
+        {
+          type: "NO_UPPERCASE_LETTER_ERROR", 
+          message: "password must contain at least one uppercase letter"
+        }
+      ]
+    }
+    const passwordValidator = new PasswordValidator(); 
+    expect(passwordValidator.validate("hey")).toEqual(passwordValidationError)
+  });
 });
 
