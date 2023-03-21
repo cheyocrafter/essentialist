@@ -1,6 +1,6 @@
 export interface PasswordValidationResult {
-  isValid: boolean, 
-  errors: {type: string, message: string}[]
+  isValid: boolean;
+  errors: {type: string, message: string}[];
 }
 
 export class PasswordValidator {
@@ -23,36 +23,30 @@ export class PasswordValidator {
     };
 
     if (this.isBetweenLengthConstraints(password)) {
-      const error = {
+      validationResult.errors.push({
         type: "PASSWORD_LENGTH_ERROR", 
         message: "password must be between 5 and 15 characters"
-      }
-      
-      validationResult.errors.push(error)
+      })
     } 
 
     if (!this.hasDigit(password)) {
-      const error = {
+      validationResult.errors.push({
         type: "NO_DIGITS_ERROR",
         message: "password must contain at least 1 digit"
-      } 
-
-      validationResult.errors.push(error)
+      })
     }
 
-    if (!this.hasUpperCaseLetter(password)) {
-      const error = {
+    if (!this.hasUpperCaseLetter(password)) { 
+      validationResult.errors.push({
         type: "NO_UPPERCASE_LETTER_ERROR", 
         message: "password must contain at least one uppercase letter"
-      }; 
-
-      validationResult.errors.push(error);
+      });
     }
 
     if (validationResult.errors.length > 0) {
       validationResult.isValid = false; 
     }
 
-    return validationResult
+    return validationResult;
   }
 }
