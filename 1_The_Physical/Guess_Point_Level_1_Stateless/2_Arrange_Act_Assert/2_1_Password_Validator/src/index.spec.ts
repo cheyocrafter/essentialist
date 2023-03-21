@@ -80,16 +80,6 @@ describe('PasswordValidator', () => {
 
   it("should return the correct error object if password does not contain at least one uppercase letter", () => {
     // arrange
-    const expected = {
-      isValid: false, 
-      errors: [
-        {
-          type: "NO_UPPERCASE_LETTER_ERROR", 
-          message: "password must contain at least one uppercase letter"
-        }
-      ]
-    }     
-    
     const password = "password123456";
 
     // act
