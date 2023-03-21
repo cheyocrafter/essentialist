@@ -43,10 +43,8 @@ describe('PasswordValidator', () => {
       };
 
       const passwordValidator = new PasswordValidator(); 
-      expect(passwordValidator.validate("pass")).toEqual(passwordValidationResult);
+      expect(passwordValidator.validate("passasdlfkasldfkjalsdf")).toEqual(passwordValidationResult);
     })
-    
-  })
-
+  });
 });
 

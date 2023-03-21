@@ -10,7 +10,7 @@
 
 ### Requirements 
 - [X] Write a class for validating passwords
-  - [ ] Between 5 and 15 characters long:
+  - [X] Between 5 and 15 characters long:
   - [ ] Contains at least one digit
   - [ ] Contains at least one upper case letter
   - [ ] Returns an object containing a boolean result and errors key that:
