@@ -4,13 +4,17 @@ export interface PasswordValidationResult {
 }
 
 export class PasswordValidator {
+  isBetweenLengthConstraints(password: string) {
+    return password.length < 5 || password.length > 15
+  }
+
   validate(password: string): PasswordValidationResult {
     const validationResult = {
       isValid: true,
       errors: [] as {type: string, message: string}[]
     };
 
-    if (password.length < 5 || password.length > 15) {
+    if (this.isBetweenLengthConstraints(password)) {
       const error = {
         type: "PASSWORD_LENGTH_ERROR", 
         message: "password must be between 5 and 15 characters"
