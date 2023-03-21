@@ -13,18 +13,15 @@ describe('PasswordValidator', () => {
 
   it("should return the correct error object if password length is between 5 and 15 charaters", () => {
     // arrange 
-    const expected = {
-      isValid: true,
-      errors: []
-    };
-
     const password = "pAssword1";
 
     // act 
     const actual = passwordValidator.validate(password);
 
     // assert
-    expect(actual).toEqual(expected);
+    expect(actual.isValid).toBeTruthy();
+    expect(actual.errors).toBeDefined();
+    expect(actual.errors.length).toBe(0);
   });
 
   it("should return the correct error object if the password length is less than 5 characters", () => {
