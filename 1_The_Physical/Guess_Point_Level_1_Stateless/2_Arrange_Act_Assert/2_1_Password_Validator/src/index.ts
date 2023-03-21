@@ -24,6 +24,16 @@ export class PasswordValidator {
       validationResult.errors.push(error)
     }
 
+    if (!(/[A-Z]/).test(password)) {
+      const error = {
+        type: "NO_UPPERCASE_LETTER_ERROR", 
+        message: "password must contain at least one uppercase letter"
+      }; 
+
+      validationResult.isValid = false; 
+      validationResult.errors.push(error);
+    }
+
     return validationResult
   }
 }
