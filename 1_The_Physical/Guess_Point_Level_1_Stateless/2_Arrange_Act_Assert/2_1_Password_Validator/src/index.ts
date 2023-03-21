@@ -28,7 +28,6 @@ export class PasswordValidator {
         message: "password must be between 5 and 15 characters"
       }
       
-      validationResult.isValid = false;
       validationResult.errors.push(error)
     } 
 
@@ -37,7 +36,7 @@ export class PasswordValidator {
         type: "NO_DIGITS_ERROR",
         message: "password must contain at least 1 digit"
       } 
-      validationResult.isValid = false;
+
       validationResult.errors.push(error)
     }
 
@@ -47,8 +46,11 @@ export class PasswordValidator {
         message: "password must contain at least one uppercase letter"
       }; 
 
-      validationResult.isValid = false; 
       validationResult.errors.push(error);
+    }
+
+    if (validationResult.errors.length > 0) {
+      validationResult.isValid = false; 
     }
 
     return validationResult
