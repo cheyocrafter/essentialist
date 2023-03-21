@@ -1,5 +1,10 @@
+export interface PasswordValidationResult {
+  isValid: boolean, 
+  errors: {type: string, message: string}[]
+}
+
 export class PasswordValidator {
-  validate(password: string): { isValid: boolean, errors: {type: string, message: string}[]} {
+  validate(password: string): PasswordValidationResult {
     const validationResult = {
       isValid: true,
       errors: [] as {type: string, message: string}[]
