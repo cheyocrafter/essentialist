@@ -1,7 +1,7 @@
 export class PasswordValidator {
   validate(password: string): { isValid: boolean, errors: {type: string, message: string}[]} {
     const validationResult = {
-      isValid: false,
+      isValid: true,
       errors: [] as {type: string, message: string}[]
     };
 
@@ -10,6 +10,17 @@ export class PasswordValidator {
         type: "PASSWORD_LENGTH_ERROR", 
         message: "password must be between 5 and 15 characters"
       }
+      
+      validationResult.isValid = false;
+      validationResult.errors.push(error)
+    } 
+
+    if (!(/[0-9]/).test(password)) {
+      const error = {
+        type: "NO_DIGITS_ERROR",
+        message: "password must contain at least 1 digit"
+      } 
+      validationResult.isValid = false;
       validationResult.errors.push(error)
     }
 
