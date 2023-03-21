@@ -1,6 +1,12 @@
 import { PasswordValidator } from './index';
 
 describe('PasswordValidator', () => {
+
+  let passwordValidator: PasswordValidator;
+  beforeEach(() => {
+    passwordValidator = new PasswordValidator(); 
+  })
+
   it("should be defined", () => {
     expect(PasswordValidator).toBeDefined()
   });
@@ -11,7 +17,6 @@ describe('PasswordValidator', () => {
       errors: []
     };
 
-    const passwordValidator = new PasswordValidator(); 
     expect(passwordValidator.validate("pAssword1")).toEqual(passwordValidationResult)
   });
 
@@ -26,7 +31,6 @@ describe('PasswordValidator', () => {
       ]
     };
 
-    const passwordValidator = new PasswordValidator(); 
     expect(passwordValidator.validate("pAs1")).toEqual(passwordValidationResult);
   });
 
@@ -41,7 +45,6 @@ describe('PasswordValidator', () => {
       ]
     };
 
-    const passwordValidator = new PasswordValidator(); 
     expect(passwordValidator.validate("passAsdlfkas1fkjalsdf")).toEqual(passwordValidationResult);
   });
 
@@ -57,7 +60,6 @@ describe('PasswordValidator', () => {
       ]
     }; 
 
-    const passwordValidator = new PasswordValidator(); 
     expect(passwordValidator.validate("pAssword")).toEqual(passwordValidationError)
   });
 
@@ -71,7 +73,7 @@ describe('PasswordValidator', () => {
         }
       ]
     }     
-    const passwordValidator = new PasswordValidator(); 
+    
     expect(passwordValidator.validate("password123456")).toEqual(passwordValidationError)
   });
 
@@ -93,7 +95,7 @@ describe('PasswordValidator', () => {
         }
       ]
     }
-    const passwordValidator = new PasswordValidator(); 
+    
     expect(passwordValidator.validate("hey")).toEqual(passwordValidationError)
   });
 });
