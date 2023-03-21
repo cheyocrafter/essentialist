@@ -4,15 +4,15 @@ export interface PasswordValidationResult {
 }
 
 export class PasswordValidator {
-  isBetweenLengthConstraints(password: string) {
+  private isBetweenLengthConstraints(password: string) {
     return password.length < 5 || password.length > 15;
   }
 
-  hasDigit(password: string) {
+  private hasDigit(password: string) {
     return (/[0-9]/).test(password);
   }
 
-  hasUpperCaseLetter(password: string) {
+  private hasUpperCaseLetter(password: string) {
     return (/[A-Z]/).test(password);
   }
 
