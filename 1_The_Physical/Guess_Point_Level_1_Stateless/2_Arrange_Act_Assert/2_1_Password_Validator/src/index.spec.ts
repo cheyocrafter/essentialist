@@ -45,23 +45,18 @@ describe('PasswordValidator', () => {
 
   it("should return the correct error object if the password length is greater than 15 characters", () => {
     // arrange
-    const expected = {
-      isValid: false,
-      errors: [
-        { 
-          type: "PASSWORD_LENGTH_ERROR", 
-          message: "password must be between 5 and 15 characters" 
-        }
-      ]
-    };
-
     const password = "passAsdlfkas1fkjalsdf";
 
     // act
     const actual = passwordValidator.validate(password);
 
     // assert
-    expect(actual).toEqual(expected);
+    expect(actual.isValid).toBeDefined(); 
+    expect(actual.isValid).toBeFalsy();
+    expect(actual.errors).toBeDefined();
+    expect(actual.errors.length).toBe(1);
+    expect(actual.errors[0].type).toMatch(/PASSWORD_LENGTH_ERROR/)
+    expect(actual.errors[0].message).toMatch(/password must be between 5 and 15 characters/)
   });
 
   
