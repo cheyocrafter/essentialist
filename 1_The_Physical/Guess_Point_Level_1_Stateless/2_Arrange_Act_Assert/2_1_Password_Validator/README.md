@@ -7,6 +7,21 @@
 > Contains at least one upper case letter
 > Return an object containing a boolean result and an errors key that — when provided with an invalid password — contains an error message or type for all errors in occurrence. There can be multiple errors at a single time.
 
+## Requirements 
+### Concerns 
+- Password Validation 
+- Error Message Generation 
+
+### Password Validation Requirements
+1. password validator tests should be implemented using the Arrange-Action-Assert testing methodology
+2. Should be a class 
+3. password should have a length between 5 and 15 characters
+4. password should contain at least 1 digit 
+5. password should contain at least one uppercase letter
+6. password validator should return a boolean result and an array of error when provided with an invalid password (there can be multiple errors at a single time)   
+
+
+
 ## Getting started
 
 To set up the project, run the following command:
