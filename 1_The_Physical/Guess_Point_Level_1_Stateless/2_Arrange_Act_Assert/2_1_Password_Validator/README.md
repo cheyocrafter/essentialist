@@ -21,6 +21,14 @@
 6. password validator should return a boolean result and an array of error when provided with an invalid password (there can be multiple errors at a single time)   
 
 
+### Error Message Generation Requirements (Errors Manager)
+1. errors manager must be a class that manages error configuration, tracking, and generation
+2. must track errors when a password is invalid
+3. error items should contain the error "type" and an error "message"
+4. should provide an API to check if errors have occurred 
+5. must accept an initial configuration list with all error items 
+6. should return a list of all errors that have occurred 
+
 
 ## Getting started
 
