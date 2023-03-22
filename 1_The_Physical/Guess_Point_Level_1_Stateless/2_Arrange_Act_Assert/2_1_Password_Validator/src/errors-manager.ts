@@ -18,6 +18,10 @@ export class ErrorsManager implements IErrorsManager {
   constructor(configList: IErrorItem[]) {
     this.configErrorList = configList;
     this.errors = [];
+    
+    if (this.configErrorList.length === 0) {
+      throw new Error("ErrorsManager must be created with a list of errors")
+    }
   }
 
   add = (errorType: ErrorType): void => {
