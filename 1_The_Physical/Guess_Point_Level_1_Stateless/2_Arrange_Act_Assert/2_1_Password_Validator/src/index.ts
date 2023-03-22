@@ -17,6 +17,10 @@ export class PasswordValidator {
     return password.length <= 15;
   }
 
+  private hasDigit(password: string): boolean {
+    return (/[0-9]/g).test(password);
+  }
+
   validate(password: string): ValidationResult {
     const validationResult = {
       isValid: true, 
@@ -37,7 +41,7 @@ export class PasswordValidator {
       });
     }
 
-    if (!(/[0-9]/g).test(password)) {
+    if (!this.hasDigit(password)) {
       validationResult.errors.push({
         type: 'NO_DIGIT_ERROR',
         message: "A password must contain at least 1 digit"
