@@ -84,7 +84,7 @@ describe('password validator', () => {
   });
 
   it("should return the correct object when given a password with a valid length, but without digits or uppercase letters", () => {
-    const password = "passw0rd";
+    const password = "password";
     const passwordValidator = new PasswordValidator();
 
     // act 
@@ -98,6 +98,26 @@ describe('password validator', () => {
     expect(validationResult.errors[0].message).toMatch(/A password must contain at least 1 digit/);
     expect(validationResult.errors[1].type).toMatch(/NO_UPPERCASE_LETTER_ERROR/);
     expect(validationResult.errors[1].message).toMatch(/A password must contain at least 1 uppercase letter/);
-  })
+  });
+
+  it("should return the correct error object when given a password without correct length, no digit, or uppercase letters", () => {
+    // arrange 
+    const password = "ok";
+    const passwordValidator = new PasswordValidator();
+
+    // act 
+    const validationResult = passwordValidator.validate(password);
+
+    // assert
+    expect(validationResult.isValid).toBeFalsy(); 
+    expect(Array.isArray(validationResult.errors)).toBe(true);
+    expect(validationResult.errors.length).toBe(3);
+    expect(validationResult.errors[0].type).toMatch(/MIN_LENGTH_ERROR/);
+    expect(validationResult.errors[0].message).toMatch(/A password must have a minimum length of 5 characters/);
+    expect(validationResult.errors[1].type).toMatch(/NO_DIGIT_ERROR/);
+    expect(validationResult.errors[1].message).toMatch(/A password must contain at least 1 digit/);
+    expect(validationResult.errors[2].type).toMatch(/NO_UPPERCASE_LETTER_ERROR/);
+    expect(validationResult.errors[2].message).toMatch(/A password must contain at least 1 uppercase letter/);
+  });
 });
 
