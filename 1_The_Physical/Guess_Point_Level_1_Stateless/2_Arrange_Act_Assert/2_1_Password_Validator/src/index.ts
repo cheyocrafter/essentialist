@@ -21,6 +21,10 @@ export class PasswordValidator {
     return (/[0-9]/g).test(password);
   }
 
+  private hasUpperCaseLetter(password: string): boolean {
+    return (/[A-Z]/).test(password);
+  }
+
   validate(password: string): ValidationResult {
     const validationResult = {
       isValid: true, 
@@ -48,7 +52,7 @@ export class PasswordValidator {
       });
     }
 
-    if (!(/[A-Z]/).test(password)) {
+    if (!this.hasUpperCaseLetter(password)) {
       validationResult.errors.push({
         type: 'NO_UPPERCASE_LETTER_ERROR',
         message: 'A password must contain at least 1 uppercase letter'
