@@ -21,7 +21,7 @@ describe('password validator', () => {
 
   it("should return the correct error object when given a password with an invalid minimum length", () => {
       // arrange 
-      const password = "1pas";
+      const password = "1Pas";
       const passwordValidator = new PasswordValidator();
 
       // act 
@@ -65,6 +65,39 @@ describe('password validator', () => {
     expect(validationResult.errors.length).toBe(1);
     expect(validationResult.errors[0].type).toMatch(/NO_DIGIT_ERROR/);
     expect(validationResult.errors[0].message).toMatch(/A password must contain at least 1 digit/);
+  })
+
+  it("should return the correct error object when given a password without at least 1 uppercase letter", () => {
+    // arrange 
+    const password = "passw0rd";
+    const passwordValidator = new PasswordValidator();
+
+    // act 
+    const validationResult = passwordValidator.validate(password);
+
+    // assert
+    expect(validationResult.isValid).toBeFalsy(); 
+    expect(Array.isArray(validationResult.errors)).toBe(true);
+    expect(validationResult.errors.length).toBe(1);
+    expect(validationResult.errors[0].type).toMatch(/NO_UPPERCASE_LETTER_ERROR/);
+    expect(validationResult.errors[0].message).toMatch(/A password must contain at least 1 uppercase letter/);
+  });
+
+  it("should return the correct object when given a password with a valid length, but without digits or uppercase letters", () => {
+    const password = "passw0rd";
+    const passwordValidator = new PasswordValidator();
+
+    // act 
+    const validationResult = passwordValidator.validate(password);
+
+    // assert 
+    expect(validationResult.isValid).toBeFalsy(); 
+    expect(Array.isArray(validationResult.errors)).toBe(true);
+    expect(validationResult.errors.length).toBe(2);
+    expect(validationResult.errors[0].type).toMatch(/NO_DIGIT_ERROR/);
+    expect(validationResult.errors[0].message).toMatch(/A password must contain at least 1 digit/);
+    expect(validationResult.errors[1].type).toMatch(/NO_UPPERCASE_LETTER_ERROR/);
+    expect(validationResult.errors[1].message).toMatch(/A password must contain at least 1 uppercase letter/);
   })
 });
 

@@ -26,6 +26,13 @@ export class PasswordValidator {
       });
     }
 
+    if (!(/[A-Z]/).test(password)) {
+      validationResult.errors.push({
+        type: 'NO_UPPERCASE_LETTER_ERROR',
+        message: 'A password must contain at least 1 uppercase letter'
+      });
+    }
+
     if (validationResult.errors.length !== 0) {
       validationResult.isValid = false;
     }
