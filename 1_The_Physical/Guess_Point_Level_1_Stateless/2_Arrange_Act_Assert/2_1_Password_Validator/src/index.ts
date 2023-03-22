@@ -9,13 +9,17 @@ export interface ValidationResult {
 }
 
 export class PasswordValidator {
+  private hasMinimumLength(password: string): boolean {
+    return password.length > 5;
+  }
+
   validate(password: string): ValidationResult {
     const validationResult = {
       isValid: true, 
       errors: [] as ErrorItem[]
     }
 
-    if (password.length < 5) {
+    if (!this.hasMinimumLength(password)) {
       validationResult.errors.push({
         type: 'MIN_LENGTH_ERROR',
         message: "A password must have a minimum length of 5 characters"
