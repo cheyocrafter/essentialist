@@ -1,4 +1,5 @@
 import { PasswordValidator } from './index';
+import { Password } from "./password"
 
 describe('password validator', () => {
   it("should detect that the 'PasswordValidtor' is defined", () => {
@@ -7,11 +8,11 @@ describe('password validator', () => {
 
   it("should return the correct error object when a password is valid", () => {
     // Arrange
-    const password = "Password123"; 
-    const passwordValidator = new PasswordValidator(); 
+    const password = new Password("Password123"); 
+    const passwordValidator = new PasswordValidator(password); 
     
     // Act 
-    const validationResult = passwordValidator.validate(password)
+    const validationResult = passwordValidator.validate()
 
     // Assert
     expect(validationResult.isValid).toBeTruthy();
@@ -21,11 +22,11 @@ describe('password validator', () => {
 
   it("should return the correct error object when given a password with an invalid minimum length", () => {
       // arrange 
-      const password = "1Pas";
-      const passwordValidator = new PasswordValidator();
+      const password = new Password("1Pas");
+      const passwordValidator = new PasswordValidator(password);
 
       // act 
-      const validationResult = passwordValidator.validate(password);
+      const validationResult = passwordValidator.validate();
 
       // assert
       expect(validationResult.isValid).toBeFalsy();
@@ -37,11 +38,11 @@ describe('password validator', () => {
 
   it("should return the correct error object when given a password with an invalid maximum length", () => {
     // arrange 
-    const password = "Thisisaverylongpasswordwith39characters";
-    const passwordValidator = new PasswordValidator();
+    const password = new Password("Thisisaverylongpasswordwith39characters");
+    const passwordValidator = new PasswordValidator(password);
 
     // act 
-    const validationResult = passwordValidator.validate(password);
+    const validationResult = passwordValidator.validate();
 
     // assert 
     expect(validationResult.isValid).toBeFalsy();
@@ -53,11 +54,11 @@ describe('password validator', () => {
 
   it("should return the correct error object when given a password without at least 1 digit", () => {
     // arrange 
-    const password = "Password";
-    const passwordValidator = new PasswordValidator();
+    const password = new Password("Password");
+    const passwordValidator = new PasswordValidator(password);
 
     // act 
-    const validationResult = passwordValidator.validate(password);
+    const validationResult = passwordValidator.validate();
 
     // assert 
     expect(validationResult.isValid).toBeFalsy(); 
@@ -69,11 +70,11 @@ describe('password validator', () => {
 
   it("should return the correct error object when given a password without at least 1 uppercase letter", () => {
     // arrange 
-    const password = "passw0rd";
-    const passwordValidator = new PasswordValidator();
+    const password = new Password("passw0rd");
+    const passwordValidator = new PasswordValidator(password);
 
     // act 
-    const validationResult = passwordValidator.validate(password);
+    const validationResult = passwordValidator.validate();
 
     // assert
     expect(validationResult.isValid).toBeFalsy(); 
@@ -84,11 +85,11 @@ describe('password validator', () => {
   });
 
   it("should return the correct object when given a password with a valid length, but without digits or uppercase letters", () => {
-    const password = "password";
-    const passwordValidator = new PasswordValidator();
+    const password = new Password("password");
+    const passwordValidator = new PasswordValidator(password);
 
     // act 
-    const validationResult = passwordValidator.validate(password);
+    const validationResult = passwordValidator.validate();
 
     // assert 
     expect(validationResult.isValid).toBeFalsy(); 
@@ -102,11 +103,11 @@ describe('password validator', () => {
 
   it("should return the correct error object when given a password without correct length, no digit, or uppercase letters", () => {
     // arrange 
-    const password = "ok";
-    const passwordValidator = new PasswordValidator();
+    const password = new Password("ok");
+    const passwordValidator = new PasswordValidator(password);
 
     // act 
-    const validationResult = passwordValidator.validate(password);
+    const validationResult = passwordValidator.validate();
 
     // assert
     expect(validationResult.isValid).toBeFalsy(); 
