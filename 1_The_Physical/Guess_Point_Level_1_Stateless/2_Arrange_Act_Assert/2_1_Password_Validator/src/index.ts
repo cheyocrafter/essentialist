@@ -1,26 +1,22 @@
 import { IPassword } from "./password";
-
-export interface ErrorItem {
-  type: string; 
-  message: string;
-}
+import { IErrorItem } from "./error";
 
 export interface ValidationResult {
   isValid: boolean;
-  errors: ErrorItem[]
+  errors: IErrorItem[]
 }
 
 export interface IPasswordValidator {
   password: IPassword;
-  validate: (password: string) => boolean;
+  validate: () => ValidationResult;
   isValid: boolean;
-  errors: ErrorItem[]
+  errors: IErrorItem[]
 }
 
-export class PasswordValidator {
+export class PasswordValidator implements IPasswordValidator {
   password: IPassword;
   isValid: boolean;
-  errors: ErrorItem[];
+  errors: IErrorItem[];
 
   constructor(password: IPassword) {
     this.password = password;
@@ -29,43 +25,41 @@ export class PasswordValidator {
   }
 
   validate(): ValidationResult {
-    const validationResult = {
-      isValid: true, 
-      errors: [] as ErrorItem[]
-    }
-
     if (!this.password.hasMinimumLength()) {
-      validationResult.errors.push({
+      this.errors.push({
         type: 'MIN_LENGTH_ERROR',
         message: "A password must have a minimum length of 5 characters"
       })
     }
 
     if (!this.password.hasMaximumLength()) {
-      validationResult.errors.push({
+      this.errors.push({
         type: 'MAX_LENGTH_ERROR',
         message: "A password must have a maximum length of 15 characters"
       });
     }
 
     if (!this.password.hasDigit()) {
-      validationResult.errors.push({
+      this.errors.push({
         type: 'NO_DIGIT_ERROR',
         message: "A password must contain at least 1 digit"
       });
     }
 
     if (!this.password.hasUpperCaseLetter()) {
-      validationResult.errors.push({
+      this.errors.push({
         type: 'NO_UPPERCASE_LETTER_ERROR',
         message: 'A password must contain at least 1 uppercase letter'
       });
     }
 
-    if (validationResult.errors.length !== 0) {
-      validationResult.isValid = false;
+    if (this.errors.length !== 0) {
+      this.isValid = false;
     }
 
-    return validationResult;
+    return {
+      isValid: this.isValid,
+      errors: this.errors
+    };
   }
 }
