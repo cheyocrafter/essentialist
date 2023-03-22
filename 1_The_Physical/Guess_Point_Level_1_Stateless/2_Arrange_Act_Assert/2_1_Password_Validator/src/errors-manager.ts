@@ -1,12 +1,12 @@
+import { ErrorType } from './errors-enum';
 export interface IErrorItem {
-  type: string; 
+  type: ErrorType; 
   message: string;
 }
-
 export interface IErrorsManager {
   errors: IErrorItem[];
   configErrorList: IErrorItem[];
-  add: (error: string) => void;
+  add: (errorType: ErrorType) => void;
   hasErrors: () => boolean;
   getErrors: () => IErrorItem[];
 }
@@ -20,7 +20,7 @@ export class ErrorsManager implements IErrorsManager {
     this.errors = [];
   }
 
-  add = (errorType: string): void => {
+  add = (errorType: ErrorType): void => {
     const foundError = this.configErrorList.find((error: IErrorItem) => {
       return error.type === errorType;
     })
