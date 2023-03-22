@@ -10,7 +10,11 @@ export interface ValidationResult {
 
 export class PasswordValidator {
   private hasMinimumLength(password: string): boolean {
-    return password.length > 5;
+    return password.length >= 5;
+  }
+
+  private hasMaximumLength(password: string): boolean {
+    return password.length <= 15;
   }
 
   validate(password: string): ValidationResult {
@@ -26,7 +30,7 @@ export class PasswordValidator {
       })
     }
 
-    if (password.length > 15) {
+    if (!this.hasMaximumLength(password)) {
       validationResult.errors.push({
         type: 'MAX_LENGTH_ERROR',
         message: "A password must have a maximum length of 15 characters"
