@@ -1,6 +1,5 @@
 export interface IPassword {
-  hasMinimumLength: () => boolean;
-  hasMaximumLength: () => boolean;
+  hasValidLength: () => boolean;
   hasDigit: () => boolean;
   hasUpperCaseLetter: () => boolean;
 }
@@ -11,12 +10,8 @@ export class Password implements IPassword {
     this.password = password;
   }
 
-  hasMinimumLength = (): boolean => {
-    return this.password.length >= 5;
-  }
-
-  hasMaximumLength = (): boolean => {
-    return this.password.length <= 15;
+  hasValidLength = (): boolean => {
+    return this.password.length >= 5 && this.password.length <= 15;
   }
 
   hasDigit = (): boolean => {
