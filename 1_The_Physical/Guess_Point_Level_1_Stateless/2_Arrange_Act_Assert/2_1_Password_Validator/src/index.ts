@@ -8,8 +8,15 @@ export class PasswordValidator {
     if (password.length < 5) {
       validationResult.errors.push({
         type: 'MIN_LENGTH_ERROR',
-        message: "A password must have a minimum of 5 characters"
+        message: "A password must have a minimum length of 5 characters"
       })
+    }
+
+    if (password.length > 15) {
+      validationResult.errors.push({
+        type: 'MAX_LENGTH_ERROR',
+        message: "A password must have a maximum length of 15 characters"
+      });
     }
 
     if (validationResult.errors.length !== 0) {

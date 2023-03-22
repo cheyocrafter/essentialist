@@ -25,14 +25,30 @@ describe('password validator', () => {
       const passwordValidator = new PasswordValidator();
 
       // act 
-      const validationResult = passwordValidator.validate(password)
+      const validationResult = passwordValidator.validate(password);
 
       // assert
       expect(validationResult.isValid).toBeFalsy();
       expect(Array.isArray(validationResult.errors)).toBe(true);
       expect(validationResult.errors.length).toBe(1);
       expect(validationResult.errors[0].type).toMatch(/MIN_LENGTH_ERROR/);
-      expect(validationResult.errors[0].message).toMatch(/A password must have a minimum of 5 characters/);
-  })
+      expect(validationResult.errors[0].message).toMatch(/A password must have a minimum length of 5 characters/);
+  });
+
+  it("should return the correct error object when given a password with an invalid maximum length", () => {
+    // arrange 
+    const password = "Thisisaverylongpasswordwith39characters";
+    const passwordValidator = new PasswordValidator();
+
+    // act 
+    const validationResult = passwordValidator.validate(password);
+
+    // assert 
+    expect(validationResult.isValid).toBeFalsy();
+    expect(Array.isArray(validationResult.errors)).toBe(true);
+    expect(validationResult.errors.length).toBe(1);
+    expect(validationResult.errors[0].type).toMatch(/MAX_LENGTH_ERROR/);
+    expect(validationResult.errors[0].message).toMatch(/A password must have a maximum length of 15 characters/);
+  });
 });
 
