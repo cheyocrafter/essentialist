@@ -1,8 +1,18 @@
+export interface ErrorItem {
+  type: string; 
+  message: string;
+}
+
+export interface ValidationResult {
+  isValid: boolean;
+  errors: ErrorItem[]
+}
+
 export class PasswordValidator {
-  validate(password: string) {
+  validate(password: string): ValidationResult {
     const validationResult = {
       isValid: true, 
-      errors: [] as {type: string, message: string}[]
+      errors: [] as ErrorItem[]
     }
 
     if (password.length < 5) {
