@@ -8,16 +8,13 @@
 > Return an object containing a boolean result and an errors key that — when provided with an invalid password — contains an error message or type for all errors in occurrence. There can be multiple errors at a single time.
 
 
-### Requirements 
+### Password Validator Requirements 
 - [X] Write a class for validating passwords
   - [X] Between 5 and 15 characters long:
   - [X] Contains at least one digit
   - [X] Contains at least one upper case letter
-  - [X] Returns an object containing a boolean result and errors key that:
-    - [X] When provided with an invalid password
-      - [X] contains an error message or type for all errors in occurrence
-      * There can be multiple errors at a single line
-
+  - [X] Returns an object containing a boolean result and errors key that When provided with an invalid password
+  - [X] contains an error message or type for all errors in occurrence (There can be multiple errors at a single line)
 
 
 ## Getting started
