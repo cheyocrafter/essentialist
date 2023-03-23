@@ -24,4 +24,8 @@ export class StatsCalculator {
   private round(value: number, decimalPlaces: number = 12): number {
     return parseFloat(value.toFixed(decimalPlaces))
   }
+
+  private sortAscending(sequence: Array<number>): Array<number> {
+    return sequence.sort((a, b) => a - b)
+  }
 }
