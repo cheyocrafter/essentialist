@@ -1,8 +1,7 @@
 export class StatsCalculator {
   minimum(sequence: Array<number>): number {
-    return sequence.reduce((acc, curr) => {
-      return acc = (acc > curr) ? curr : acc, acc
-    }, Infinity);
+    const sorted = sequence.sort((a, b) => a - b);
+    return sorted[0];
   }
 
   maximum(sequence: Array<number>): number {
@@ -18,5 +17,9 @@ export class StatsCalculator {
     const sum = sequence.reduce((acc, curr) => acc + curr, 0); 
     const num = sequence.length; 
     return parseFloat((sum / num).toFixed(12));
+  }
+
+  private sum(sequence: Array<number>): number { 
+    return sequence.reduce((result, currentValue) => result + currentValue, 0);
   }
 }
