@@ -7,7 +7,7 @@ describe('stats calculator', () => {
     expect(StatsCalculator).toBeDefined()
   })
 
-  describe('Return Minimum', () => {
+  describe('statsCalculator.minimum()', () => {
     it.each([
       {expected: -8, sequence: [2, 4, 21, -8, 53, 40]},
       {expected: -298, sequence: [-298, -100, 3, 8574, 2]},
@@ -25,17 +25,23 @@ describe('stats calculator', () => {
     });
   })
 
-  it("should find that '53' is the largest value in the '[2, 4, 21, -8, 53, 40]' sequence", () => {
-    // arrange 
-    const sequence = [2, 4, 21, -8, 53, 40];
-    const statsCalculator = new StatsCalculator()
-
-    // act 
-    const result = statsCalculator.maximum(sequence);
-
-    // assert
-    expect(result).toBe(53)
-  });
+  describe('statsCalculator.maximum()', () => {
+    it.each([
+      {expected: 53, sequence: [2, 4, 21, -8, 53, 40]},
+      {expected: 8574, sequence: [-298, -100, 3, 8574, 2]},
+      {expected: 20000, sequence: [5899, 84, 20000, 47, 400]},
+      {expected: 274, sequence: [83, 274, 11, 57, 23]},
+    ])(`should return '$expected' since it is the maximum integer in the sequence '$sequence'`, ({ expected, sequence }) => {
+      // const sequence = [2, 4, 21, -8, 53, 40];
+      const statsCalculator = new StatsCalculator();
+  
+      // act 
+      const result = statsCalculator.maximum(sequence);
+      
+      // assert 
+      expect(result).toBe(expected);
+    });
+  })
 
   it("should return '6' after counting the numbers in the sequence '[1, 2, 3, 4, 5, 6]'", () => {
     // arrange 
