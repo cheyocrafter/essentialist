@@ -1,12 +1,10 @@
 export class StatsCalculator {
   minimum(sequence: Array<number>): number {
-    const sorted = sequence.sort((a, b) => a - b);
-    return sorted[0];
+    return this.sortAscending(sequence)[0]
   }
 
   maximum(sequence: Array<number>): number {
-    const sorted = sequence.sort((a, b) => a - b);
-    return sorted[sorted.length-1];
+    return this.sortAscending(sequence)[this.count(sequence)-1]
   }
 
   count(sequence: Array<number>): number {
@@ -14,14 +12,14 @@ export class StatsCalculator {
   }
 
   average(sequence: Array<number>): number {
-    return this.round(this.sum(sequence) / this.count(sequence));
+    return this.round((this.sum(sequence) / this.count(sequence)), 12);
   }
 
   private sum(sequence: Array<number>): number { 
     return sequence.reduce((result, currentValue) => result + currentValue, 0);
   }
 
-  private round(value: number, decimalPlaces: number = 12): number {
+  private round(value: number, decimalPlaces: number = 2): number {
     return parseFloat(value.toFixed(decimalPlaces))
   }
 
