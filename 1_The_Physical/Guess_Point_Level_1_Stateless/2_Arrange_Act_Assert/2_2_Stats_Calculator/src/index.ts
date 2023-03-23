@@ -14,7 +14,7 @@ export class StatsCalculator {
   }
 
   average(sequence: Array<number>): number {
-    const sum = sequence.reduce((acc, curr) => acc + curr, 0); 
+    const sum = this.sum(sequence)
     const num = sequence.length; 
     return parseFloat((sum / num).toFixed(12));
   }
