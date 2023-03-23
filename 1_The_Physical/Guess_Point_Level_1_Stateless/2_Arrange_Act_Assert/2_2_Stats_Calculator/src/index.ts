@@ -15,8 +15,8 @@ export class StatsCalculator {
 
   average(sequence: Array<number>): number {
     const sum = this.sum(sequence)
-    const num = sequence.length; 
-    return parseFloat((sum / num).toFixed(12));
+    const count = this.count(sequence); 
+    return parseFloat((sum / count).toFixed(12));
   }
 
   private sum(sequence: Array<number>): number { 
