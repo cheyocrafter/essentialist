@@ -62,17 +62,21 @@ describe('stats calculator', () => {
     });
   }); 
 
-
-  it("should return the average '18.666666666667' rounded to 12 decimal places given the sequence '[2, 4, 21, -8, 53, 40]'", () => {
-    // arrange 
-    const sequence = [2, 4, 21, -8, 53, 40];
-    const statsCalculator = new StatsCalculator(); 
-
-    // act 
-    const result = statsCalculator.average(sequence);
-
-    // assert 
-    expect(result).toBe(18.666666666667);
+  describe('statsCalculator.average()', () => {
+    it.each([
+      {expected: 18.666666667, sequence: [2, 4, 21, -8, 53, 40]},
+      {expected: 1033.125, sequence: [-298, -100, 3, 8574, 2, 47, 29, 8]},
+      {expected: 122.666666667, sequence: [83, 274, 11]},
+      {expected:  2706.8, sequence: [5899, 84, 20000, 47, 400, 100, 200, 300, 38, 0]},
+    ])("should return the average '$expected' given the sequence '$sequence'", ({ expected, sequence }) => {
+      // arrange 
+      const statsCalculator = new StatsCalculator(); 
+  
+      // act 
+      const result = statsCalculator.average(sequence);
+  
+      // assert 
+      expect(result).toBe(expected);
+    });
   });
-
 })

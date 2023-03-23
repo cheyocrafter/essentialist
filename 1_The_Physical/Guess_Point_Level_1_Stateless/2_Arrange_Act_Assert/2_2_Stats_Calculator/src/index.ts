@@ -12,7 +12,7 @@ export class StatsCalculator {
   }
 
   average(sequence: Array<number>): number {
-    return this.round((this.sum(sequence) / this.count(sequence)), 12);
+    return this.round((this.sum(sequence) / this.count(sequence)), 9);
   }
 
   private sum(sequence: Array<number>): number { 
