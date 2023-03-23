@@ -50,7 +50,7 @@ describe('stats calculator', () => {
       {expected: 3, sequence: [83, 274, 11]},
       {expected: 10, sequence: [5899, 84, 20000, 47, 400, 100, 200, 300, 38, 0]},
     ])
-    ("should return '6' after counting the numbers in the sequence '[1, 2, 3, 4, 5, 6]'", ({ expected, sequence }) => {
+    ("should return '$expected' after counting the numbers in the sequence '$sequence'", ({ expected, sequence }) => {
       // arrange 
       const statsCalculator = new StatsCalculator(); 
   
