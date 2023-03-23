@@ -14,12 +14,14 @@ export class StatsCalculator {
   }
 
   average(sequence: Array<number>): number {
-    const sum = this.sum(sequence)
-    const count = this.count(sequence); 
-    return parseFloat((sum / count).toFixed(12));
+    return this.round(this.sum(sequence) / this.count(sequence));
   }
 
   private sum(sequence: Array<number>): number { 
     return sequence.reduce((result, currentValue) => result + currentValue, 0);
+  }
+
+  private round(value: number, decimalPlaces: number = 12): number {
+    return parseFloat(value.toFixed(decimalPlaces))
   }
 }
