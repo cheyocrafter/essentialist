@@ -17,4 +17,17 @@ describe('military time validator', () => {
     // assert 
     expect(actual).toBe(expected);
   });
+
+  it("should be albe to tell a string time range is invalid", () => {
+    // arrange 
+    const timeRange = "25:00 - 12:23"; 
+    const militaryTimeValidator = new MilitaryTimeValidator();
+    const expected = false; 
+
+    // act 
+    const actual = militaryTimeValidator.validate(timeRange);
+
+    // assert 
+    expect(actual).toBe(expected);
+  })
 });
