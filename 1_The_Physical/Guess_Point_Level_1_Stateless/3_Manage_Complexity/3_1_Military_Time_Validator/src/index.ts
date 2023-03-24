@@ -1,10 +1,10 @@
 export class MilitaryTimeValidator {
-  private processTimeRange(timeRange: string): string[]  {
-    return timeRange.split(" - ");
+  private splitByDelimiter(targetString: string, delimiter: string): string[] {
+    return targetString.split(delimiter);
   }
   
   private processTime(time: string): number[] {
-    const [hours, minutes] = time.split(":");
+    const [hours, minutes] = this.splitByDelimiter(time, ":");
     return [parseInt(hours, 10), parseInt(minutes, 10)];
   }
 
@@ -22,7 +22,7 @@ export class MilitaryTimeValidator {
   }
   
   validate(timeRange: string): boolean {
-    const [startTime, endTime] = this.processTimeRange(timeRange);
+    const [startTime, endTime] = this.splitByDelimiter(timeRange, " - ");
     return this.isValidTime(startTime) && this.isValidTime(endTime);
   }
 }
