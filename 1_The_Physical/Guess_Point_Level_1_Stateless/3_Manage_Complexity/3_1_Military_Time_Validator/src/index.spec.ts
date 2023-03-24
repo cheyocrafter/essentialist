@@ -1,5 +1,3 @@
-
 describe('military time validator', () => {
 
-
-})
+});
