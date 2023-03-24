@@ -20,9 +20,14 @@ export class MilitaryTimeValidator {
   private isValidMinute(minute: number): boolean {
     return minute >= 0 && minute <= 59;
   }
+
+  private hasValidFormat(timeRange: string): boolean {
+    const regex = /^([01]\d|2[0-3]):([0-5]\d)\s-\s([01]\d|2[0-3]):([0-5]\d)$/;
+    return (regex).test(timeRange)
+  }
   
   isValidRange(timeRange: string): boolean {
     const [startTime, endTime] = this.splitByDelimiter(timeRange, " - ");
-    return this.isValidTime(startTime) && this.isValidTime(endTime);
+    return this.hasValidFormat(timeRange) &&  this.isValidTime(startTime) && this.isValidTime(endTime);
   }
 }
