@@ -10,13 +10,15 @@ export class MilitaryTimeValidator {
 
   private isValidTime(time: string): boolean {
     const [hours, minutes] = this.processTime(time);
-    return (hours >= 0 && hours <= 23) && (minutes >= 0 && minutes <= 59)
+    return this.isHourValid(hours) && (minutes >= 0 && minutes <= 59)
+  }
+
+  private isHourValid(hour: number): boolean {
+    return hour >= 0 && hour <= 23
   }
   
   validate(timeRange: string): boolean {
     const [startTime, endTime] = this.processTimeRange(timeRange);
-    console.log(this.isValidTime(startTime));
-    console.log(this.isValidTime(endTime));
     return this.isValidTime(startTime) && this.isValidTime(endTime);
   }
 }
