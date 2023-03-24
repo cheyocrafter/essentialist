@@ -10,11 +10,15 @@ export class MilitaryTimeValidator {
 
   private isValidTime(time: string): boolean {
     const [hours, minutes] = this.processTime(time);
-    return this.isHourValid(hours) && (minutes >= 0 && minutes <= 59)
+    return this.isHourValid(hours) && this.isMinuteValid(minutes);
   }
 
   private isHourValid(hour: number): boolean {
     return hour >= 0 && hour <= 23
+  }
+
+  private isMinuteValid(minute: number): boolean {
+    return minute >= 0 && minute <= 59;
   }
   
   validate(timeRange: string): boolean {
