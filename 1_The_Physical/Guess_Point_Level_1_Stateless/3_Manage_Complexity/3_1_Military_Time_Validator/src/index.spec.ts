@@ -23,8 +23,14 @@ describe('military time validator', () => {
     { timeRange: '12:60 - 13:45',  expected: false, message: "invalid" }, 
     { timeRange: '09:00 - 100:00', expected: false, message: "invalid" }, 
     { timeRange: '400:00 - 500:00', expected: false, message: "invalid" }, 
+
+    { timeRange: "01:38 -22:33",  expected: false, message: "invalid" },
+    { timeRange: "-03:15 - 18:45",  expected: false, message: "invalid" },
+    { timeRange: "16:15 07:30",  expected: false, message: "invalid" },
+    { timeRange: "16:15.07:30",  expected: false, message: "invalid" },
+    { timeRange: "16:15",  expected: false, message: "invalid" },
   ])
-  ('should return that the time range "$timeRange" is "$message"', ({ timeRange, expected }) => {
+  ('should return "$timeRange" is "$message"', ({ timeRange, expected }) => {
     // arrange
     const militaryTimeValidator = new MilitaryTimeValidator();
 
