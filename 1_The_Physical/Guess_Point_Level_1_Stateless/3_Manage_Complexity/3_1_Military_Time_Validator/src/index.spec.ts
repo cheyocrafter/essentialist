@@ -12,7 +12,7 @@ describe('military time validator', () => {
     const expected = true; 
 
     // act 
-    const actual = militaryTimeValidator.validate(timeRange);
+    const actual = militaryTimeValidator.isValidRange(timeRange);
 
     // assert 
     expect(actual).toBe(expected);
@@ -25,7 +25,7 @@ describe('military time validator', () => {
     const expected = false; 
 
     // act 
-    const actual = militaryTimeValidator.validate(timeRange);
+    const actual = militaryTimeValidator.isValidRange(timeRange);
 
     // assert 
     expect(actual).toBe(expected);

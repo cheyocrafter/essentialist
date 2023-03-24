@@ -3,25 +3,25 @@ export class MilitaryTimeValidator {
     return targetString.split(delimiter);
   }
   
-  private processTime(time: string): number[] {
+  private parseTime(time: string): number[] {
     const [hours, minutes] = this.splitByDelimiter(time, ":");
     return [parseInt(hours, 10), parseInt(minutes, 10)];
   }
 
   private isValidTime(time: string): boolean {
-    const [hours, minutes] = this.processTime(time);
-    return this.isHourValid(hours) && this.isMinuteValid(minutes);
+    const [hours, minutes] = this.parseTime(time);
+    return this.isValidHour(hours) && this.isValidMinute(minutes);
   }
 
-  private isHourValid(hour: number): boolean {
-    return hour >= 0 && hour <= 23
+  private isValidHour(hour: number): boolean {
+    return hour >= 0 && hour <= 23;
   }
 
-  private isMinuteValid(minute: number): boolean {
+  private isValidMinute(minute: number): boolean {
     return minute >= 0 && minute <= 59;
   }
   
-  validate(timeRange: string): boolean {
+  isValidRange(timeRange: string): boolean {
     const [startTime, endTime] = this.splitByDelimiter(timeRange, " - ");
     return this.isValidTime(startTime) && this.isValidTime(endTime);
   }
