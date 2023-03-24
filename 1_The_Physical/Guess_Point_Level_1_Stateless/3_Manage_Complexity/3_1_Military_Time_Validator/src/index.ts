@@ -3,7 +3,7 @@ export class MilitaryTimeValidator {
     return timeRange.split(" - ");
   }
   
-  processTime(time: string) {
+  processTime(time: string): number[] {
     const [hours, minutes] = time.split(":");
     return [parseInt(hours, 10), parseInt(minutes, 10)];
   }
