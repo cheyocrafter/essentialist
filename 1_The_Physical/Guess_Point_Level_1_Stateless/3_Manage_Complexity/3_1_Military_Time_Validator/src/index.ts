@@ -1,9 +1,9 @@
 export class MilitaryTimeValidator {
-  processTimeRange(timeRange: string)  {
+  private processTimeRange(timeRange: string): string[]  {
     return timeRange.split(" - ");
   }
   
-  processTime(time: string): number[] {
+  private processTime(time: string): number[] {
     const [hours, minutes] = time.split(":");
     return [parseInt(hours, 10), parseInt(minutes, 10)];
   }
