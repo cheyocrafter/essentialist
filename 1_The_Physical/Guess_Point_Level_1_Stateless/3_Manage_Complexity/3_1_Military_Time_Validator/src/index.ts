@@ -4,6 +4,6 @@ export class MilitaryTimeValidator {
       return false;
     }
     
-    return false;
+    return true;
   }
 }
