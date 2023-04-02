@@ -41,4 +41,13 @@ describe('military time validator', () => {
 
     expect(result).toBe(false)
   })
+
+  it("should know that '23:59 - 23:00' is invalid", () => {
+    const input = "23:59 - 23:00"; 
+    const validator = new MilitaryTimeValidator(); 
+    
+    const result = validator.isValidRange(input);
+
+    expect(result).toBe(false);
+  }); 
 });
