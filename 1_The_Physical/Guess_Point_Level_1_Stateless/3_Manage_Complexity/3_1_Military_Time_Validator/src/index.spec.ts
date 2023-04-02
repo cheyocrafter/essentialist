@@ -13,6 +13,14 @@ describe('military time validator', () => {
     const result = validator.isValidRange(input);
 
     expect(result).toBe(false)
-  })
+  }); 
 
+  it("should know that '01:12-14:32' has an invalid format", () => {
+    const input = "01:12-14:32"; 
+    const validator = new MilitaryTimeValidator(); 
+
+    const result = validator.isValidRange(input); 
+
+    expect(result).toBe(false)
+  })
 });
