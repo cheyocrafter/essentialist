@@ -22,5 +22,5 @@ describe('military time validator', () => {
     const result = validator.isValidRange(input); 
 
     expect(result).toBe(false)
-  })
+  });
 });
