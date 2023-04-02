@@ -10,19 +10,16 @@ export class MilitaryTimeValidator {
     date.setHours(hours);
     date.setMinutes(minutes);
     date.setSeconds(0);
-    return date.getTime()
+    
+    return date.getTime();
   }
 
-  isValidRange(timeRange: string) {
+  isValidRange(timeRange: string): boolean {
     if (!(/^\d{2}:\d{2}\s-\s\d{2}:\d{2}$/).test(timeRange)) {
       return false;
     }
 
-    // validate start and end times 
     let [startTime, endTime] = timeRange.split(" - "); 
-    let [startTimeHours, startTimeMinutes] = startTime.split(":").map(Number);
-    let [endTimeHours, endTimeMinutes] = endTime.split(":").map(Number);
-
     let isValidStartTime = this.isValidTime(startTime); 
     let isValidEndTime = this.isValidTime(endTime); 
     
