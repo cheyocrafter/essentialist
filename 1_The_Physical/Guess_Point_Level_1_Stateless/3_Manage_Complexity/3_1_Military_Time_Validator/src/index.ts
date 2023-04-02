@@ -4,6 +4,15 @@ export class MilitaryTimeValidator {
     return (hours >= 0 && hours <= 23) && (minutes >= 0 && minutes <= 59);
   }
 
+  private getMilliseconds(timeString: string): number {
+    const [ hours, minutes ] = timeString.split(":").map(Number);
+    const date = new Date(); 
+    date.setHours(hours);
+    date.setMinutes(minutes);
+    date.setSeconds(0);
+    return date.getTime()
+  }
+
   isValidRange(timeRange: string) {
     if (!(/^\d{2}:\d{2}\s-\s\d{2}:\d{2}$/).test(timeRange)) {
       return false;
@@ -18,16 +27,10 @@ export class MilitaryTimeValidator {
     let isValidEndTime = this.isValidTime(endTime); 
     
     // convert start time and end time to milliseconds and compare 
-    const startTimeDate = new Date(); 
-    startTimeDate.setHours(startTimeHours);
-    startTimeDate.setMinutes(startTimeMinutes);
-    startTimeDate.setSeconds(0);
+    const startTimeInMilliseconds = this.getMilliseconds(startTime);
+    const endTimeInMilliseconds = this.getMilliseconds(endTime);
 
-    const endTimeDate = new Date(); 
-    endTimeDate.setHours(endTimeHours);
-    endTimeDate.setMinutes(endTimeMinutes);
-    endTimeDate.setSeconds(0);
-
-    return isValidStartTime && isValidEndTime && (startTimeDate.getTime() < endTimeDate.getTime());
+    return isValidStartTime && isValidEndTime 
+        && (startTimeInMilliseconds < endTimeInMilliseconds);
   }
 }
