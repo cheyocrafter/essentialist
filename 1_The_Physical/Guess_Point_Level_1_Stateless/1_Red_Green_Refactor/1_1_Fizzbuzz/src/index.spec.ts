@@ -24,6 +24,14 @@ describe("fizzbuzz", () => {
     expect(fizzBuzz(3)).toBe('Fizz');
   });
 
+  it('returns "Fizz" for 6', () => {
+    expect(fizzBuzz(6)).toBe('Fizz');
+  });
+
+  it('returns "Fizz" for 9', () => {
+    expect(fizzBuzz(9)).toBe('Fizz');
+  });
+
   it('returns "Buzz" for 5', () => {
     expect(fizzBuzz(5)).toBe('Buzz');
   });
@@ -32,9 +40,6 @@ describe("fizzbuzz", () => {
     expect(fizzBuzz(15)).toBe('FizzBuzz');
   });
 
-  it('returns "Fizz" for 9', () => {
-    expect(fizzBuzz(9)).toBe('Fizz');
-  });
 
 
 
