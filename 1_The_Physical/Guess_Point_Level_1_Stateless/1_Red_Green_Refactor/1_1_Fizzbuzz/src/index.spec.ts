@@ -24,6 +24,12 @@ describe("fizzbuzz", () => {
     expect(fizzBuzz(3)).toBe('Fizz');
   });
 
+  it('return "Buzz" for 5', () => {
+    expect(fizzBuzz(5)).toBe('Buzz');
+  });
+
   
+
+
 
 });
