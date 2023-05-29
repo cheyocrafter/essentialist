@@ -37,7 +37,7 @@ describe("fizzbuzz", () => {
     expect(fizzBuzz(input)).toBe(result);
   })  
 
-  it('throws an error for numbers over 100', () => {
-    expect(fizzBuzz(102)).toThrowError();
+  it('throws an error for numbers > 100', () => {
+    expect(() => fizzBuzz(102)).toThrow();
   })
 });
