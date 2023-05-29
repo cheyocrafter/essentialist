@@ -4,7 +4,7 @@ Grading Checklist
 - [ ] I have committed on every single transition from red to green to refactor
 - [ ] I have tests that validate the following statements 
   - [X]"mom" returns true
-  - [ ]"Mom" returns true
+  - [X]"Mom" returns true
   - [ ]"MoM" returns true
   - [ ]"Momx" returns false
   - [ ]"xMomx" returns true
@@ -46,7 +46,7 @@ describe('palindrome checker', () => {
 
     const result = palindromeChecker.isPalindrome(input);
 
-    expect(result).toBeFalsy();
+    expect(result).toBeTruthy();
   })
 
 
