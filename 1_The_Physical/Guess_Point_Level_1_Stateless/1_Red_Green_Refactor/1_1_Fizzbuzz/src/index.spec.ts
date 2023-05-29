@@ -34,13 +34,17 @@ describe("fizzbuzz", () => {
     expect(fizzBuzz(15)).toBe('FizzBuzz');
   });
 
+  it('returns "FizzBuzz" for 45', () => {
+    expect(fizzBuzz(45)).toBe("FizzBuzz");
+  })
+
   it('returns "43" for 43', () => {
     expect(fizzBuzz(43)).toBe("43");
   });
 
   it('returns "Fizz" for 42', () => {
     expect(fizzBuzz(42)).toBe("Fizz")
-  })
+  });
 
   
 });
