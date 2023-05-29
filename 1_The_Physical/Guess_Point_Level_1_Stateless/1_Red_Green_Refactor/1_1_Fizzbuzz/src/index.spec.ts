@@ -1,3 +1,4 @@
+import { NumberOutOfRangeError } from "./error";
 import { fizzBuzz } from "./fizzbuzz";
 
 /*
@@ -38,10 +39,10 @@ describe("fizzbuzz", () => {
   })  
 
   it('throws an error for numbers > 100', () => {
-    expect(() => fizzBuzz(102)).toThrow(new Error("Number argument should not exceed 100"));
+    expect(() => fizzBuzz(102)).toThrow(new NumberOutOfRangeError("Number argument should not exceed 100"));
   })
 
   it('throws an error for numbers < 1', () => {
-    expect(() => fizzBuzz(-3)).toThrow(/Number argument should be between 1 and 100/);
+    expect(() => fizzBuzz(-3)).toThrow(new NumberOutOfRangeError("Number argument should not be less than 1"));
   })
 });

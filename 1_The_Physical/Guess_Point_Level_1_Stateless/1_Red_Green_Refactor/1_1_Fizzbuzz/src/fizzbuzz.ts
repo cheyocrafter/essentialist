@@ -1,10 +1,12 @@
+import { NumberOutOfRangeError } from "./error";
+
 export function fizzBuzz(num: number) {
   if (num > 100) {
-    throw new Error("Number argument should not exceed 100");
+    throw new NumberOutOfRangeError("Number argument should not exceed 100");
   }
 
   if (num < 1) {
-    throw new Error("Number argument should be between 1 and 100");
+    throw new NumberOutOfRangeError("Number argument should not be less than 1");
   }
 
   const isMultipleOfThree = num % 3 === 0; 
