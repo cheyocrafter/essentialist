@@ -30,6 +30,10 @@ describe("fizzbuzz", () => {
     expect(fizzBuzz(5)).toBe('Buzz');
   });
 
+  it('returns "Buzz" for 25', () => {
+    expect(fizzBuzz(25)).toBe('Buzz');
+  })
+
   it('returns "FizzBuzz" for 15', () => {
     expect(fizzBuzz(15)).toBe('FizzBuzz');
   });
