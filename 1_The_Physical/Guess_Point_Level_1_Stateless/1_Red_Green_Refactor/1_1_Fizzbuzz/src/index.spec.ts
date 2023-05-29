@@ -40,4 +40,8 @@ describe("fizzbuzz", () => {
   it('throws an error for numbers > 100', () => {
     expect(() => fizzBuzz(102)).toThrow();
   })
+
+  it('throws an error for numbers < 1', () => {
+    expect(() => fizzBuzz(-3)).toThrow(/Number argument should be between 1 and 100/);
+  })
 });
