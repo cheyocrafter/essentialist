@@ -49,5 +49,14 @@ describe('palindrome checker', () => {
     expect(result).toBeTruthy();
   })
 
+  it("should know that 'MoM' is a palindrome", () => {
+    const input = "MoM"; 
+    const palindromeChecker = new PalindromeChecker(); 
+
+    const result = palindromeChecker.isPalindrome(input);
+
+    expect(result).toBeTruthy();
+  })
+
 
 })
