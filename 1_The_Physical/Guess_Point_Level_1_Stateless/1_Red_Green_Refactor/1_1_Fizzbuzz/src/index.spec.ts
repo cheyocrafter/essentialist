@@ -36,4 +36,8 @@ describe("fizzbuzz", () => {
   ])("returns $result for $input", ({input, result }) => {
     expect(fizzBuzz(input)).toBe(result);
   })  
+
+  it('throws an error for numbers over 100', () => {
+    expect(fizzBuzz(102)).toThrowError();
+  })
 });
