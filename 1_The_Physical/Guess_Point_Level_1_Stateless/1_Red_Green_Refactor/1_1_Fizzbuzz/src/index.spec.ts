@@ -42,6 +42,10 @@ describe("fizzbuzz", () => {
     expect(fizzBuzz(45)).toBe("FizzBuzz");
   })
 
+  it('returns "FizzBuzz" for 90', () => {
+    expect(fizzBuzz(90)).toBe("FizzBuzz");
+  })
+
   it('returns "43" for 43', () => {
     expect(fizzBuzz(43)).toBe("43");
   });
