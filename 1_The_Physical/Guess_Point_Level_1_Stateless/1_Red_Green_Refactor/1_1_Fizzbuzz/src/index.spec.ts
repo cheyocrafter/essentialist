@@ -38,7 +38,7 @@ describe("fizzbuzz", () => {
   })  
 
   it('throws an error for numbers > 100', () => {
-    expect(() => fizzBuzz(102)).toThrow();
+    expect(() => fizzBuzz(102)).toThrow(new Error("Number argument should not exceed 100"));
   })
 
   it('throws an error for numbers < 1', () => {
