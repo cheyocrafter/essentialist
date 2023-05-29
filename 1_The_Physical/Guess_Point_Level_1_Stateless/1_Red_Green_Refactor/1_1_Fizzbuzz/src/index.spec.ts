@@ -20,47 +20,20 @@ Grading Checklist
 
 */
 describe("fizzbuzz", () => {
-  it.each([ 3, 6, 9])(
-    "returns 'Fizz' for multiples of 3",
-    (value: number) => {
-      expect(fizzBuzz(value)).toBe('Fizz');
-  });
-
-  it('returns "Buzz" for 5', () => {
-    expect(fizzBuzz(5)).toBe('Buzz');
-  });
-
-  it('returns "Buzz" for 25', () => {
-    expect(fizzBuzz(25)).toBe('Buzz');
-  })
-
-  it('returns "FizzBuzz" for 15', () => {
-    expect(fizzBuzz(15)).toBe('FizzBuzz');
-  });
-
-  it('returns "FizzBuzz" for 45', () => {
-    expect(fizzBuzz(45)).toBe("FizzBuzz");
-  })
-
-  it('returns "FizzBuzz" for 90', () => {
-    expect(fizzBuzz(90)).toBe("FizzBuzz");
-  })
-
-  it('returns "11" for 11', () => {
-    expect(fizzBuzz(11)).toBe("11");
-  })
-
-  it('returns "23" for 23', () => {
-    expect(fizzBuzz(23)).toBe("23");
-  })
-
-  it('returns "43" for 43', () => {
-    expect(fizzBuzz(43)).toBe("43");
-  });
-
-  it('returns "Fizz" for 42', () => {
-    expect(fizzBuzz(42)).toBe("Fizz")
-  });
-
-  
+  it.each([
+    { input: 15, result: 'FizzBuzz' },
+    { input: 45, result: 'FizzBuzz' },
+    { input: 90, result: 'FizzBuzz' },
+    { input: 3, result: 'Fizz' },
+    { input: 6, result: 'Fizz' },
+    { input: 9, result: 'Fizz' },
+    { input: 5, result: 'Buzz' },
+    { input: 25, result: 'Buzz' },
+    { input: 50, result: 'Buzz' },
+    { input: 11, result: '11' },
+    { input: 23, result: '23' },
+    { input: 43, result: '43' },
+  ])("returns $result for $input", ({input, result }) => {
+    expect(fizzBuzz(input)).toBe(result);
+  })  
 });
