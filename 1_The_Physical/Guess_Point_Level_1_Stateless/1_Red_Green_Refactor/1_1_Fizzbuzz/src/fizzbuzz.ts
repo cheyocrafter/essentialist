@@ -3,7 +3,9 @@ export function fizzBuzz(num: number) {
     throw new Error("Number argument should not exceed 100");
   }
 
-  
+  if (num < 1) {
+    throw new Error("Number argument should be between 1 and 100");
+  }
 
   const isMultipleOfThree = num % 3 === 0; 
   const isMultipleOfFive = num % 5 === 0; 
