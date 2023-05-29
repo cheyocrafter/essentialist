@@ -20,16 +20,10 @@ Grading Checklist
 
 */
 describe("fizzbuzz", () => {
-  it('returns "Fizz" for 3', () => {
-    expect(fizzBuzz(3)).toBe('Fizz');
-  });
-
-  it('returns "Fizz" for 6', () => {
-    expect(fizzBuzz(6)).toBe('Fizz');
-  });
-
-  it('returns "Fizz" for 9', () => {
-    expect(fizzBuzz(9)).toBe('Fizz');
+  it.each([ 3, 6, 9])(
+    "returns 'Fizz' for multiples of 3",
+    (value: number) => {
+      expect(fizzBuzz(value)).toBe('Fizz');
   });
 
   it('returns "Buzz" for 5', () => {
@@ -40,7 +34,9 @@ describe("fizzbuzz", () => {
     expect(fizzBuzz(15)).toBe('FizzBuzz');
   });
 
+  it('returns "43" for 43', () => {
+    expect(fizzBuzz(43)).toBe("43");
+  });
 
-
-
+  
 });
