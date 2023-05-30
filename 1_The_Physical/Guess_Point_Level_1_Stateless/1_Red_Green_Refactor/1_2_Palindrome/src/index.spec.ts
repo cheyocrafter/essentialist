@@ -103,5 +103,14 @@ describe('palindrome checker', () => {
     expect(result).toBeTruthy();
   });
 
+  it("should know that 'Never Odd or Even1' is a palindrome", () => {
+    const input = "Never Odd or Even1"; 
+    const palindromeChecker = new PalindromeChecker(); 
+
+    const result = palindromeChecker.isPalindrome(input);
+
+    expect(result).toBeFalsy();
+  });
+
 
 })
