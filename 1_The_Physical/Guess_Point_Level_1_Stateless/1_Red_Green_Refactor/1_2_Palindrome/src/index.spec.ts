@@ -76,5 +76,14 @@ describe('palindrome checker', () => {
     expect(result).toBeTruthy();
   })
 
+  it("should know that 'Was It A Rat I Saw' is a palindrome", () => {
+    const input = "Was It A Rat I Saw"; 
+    const palindromeChecker = new PalindromeChecker(); 
+
+    const result = palindromeChecker.isPalindrome(input);
+
+    expect(result).toBeTruthy();
+  })
+
 
 })
