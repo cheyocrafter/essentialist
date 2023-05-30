@@ -9,9 +9,9 @@ Grading Checklist
   - [X]"Momx" returns false
   - [X]"xMomx" returns true
   - [X]"Was It A Rat I Saw" returns true
-  - [ ]"Never Odd or Even" returns true
+  - [X]"Never Odd or Even" returns true
   - [ ]"Never Odd or Even1" returns false 
-  - [ ]"1Never Odd or Even1" returns true
+  - [X]"1Never Odd or Even1" returns true
   - [ ] Once I have made the aforementioned tests pass, I have refactored my test specifications to use it.each() to perform parameterization (see Tip #3 here)
 - [ ] There is no duplication in my test code or my production code
 */
@@ -87,6 +87,15 @@ describe('palindrome checker', () => {
 
   it("should know that 'Never Odd or Even' is a palindrome", () => {
     const input = "Never Odd or Even"; 
+    const palindromeChecker = new PalindromeChecker(); 
+
+    const result = palindromeChecker.isPalindrome(input);
+
+    expect(result).toBeTruthy();
+  });
+
+  it("should know that '1Never Odd or Even1' is a palindrome", () => {
+    const input = "1Never Odd or Even1"; 
     const palindromeChecker = new PalindromeChecker(); 
 
     const result = palindromeChecker.isPalindrome(input);
