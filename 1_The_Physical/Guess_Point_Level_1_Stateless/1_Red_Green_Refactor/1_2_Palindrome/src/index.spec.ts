@@ -6,8 +6,8 @@ Grading Checklist
   - [X]"mom" returns true
   - [X]"Mom" returns true
   - [X]"MoM" returns true
-  - [ ]"Momx" returns false
-  - [ ]"xMomx" returns true
+  - [X]"Momx" returns false
+  - [X]"xMomx" returns true
   - [ ]"Was It A Rat I Saw" returns true
   - [ ]"Never Odd or Even" returns true
   - [ ]"Never Odd or Even1" returns false 
@@ -65,6 +65,15 @@ describe('palindrome checker', () => {
     const result = palindromeChecker.isPalindrome(input);
 
     expect(result).toBeFalsy();
+  })
+
+  it("should know that 'xMomx' is a palindrome", () => {
+    const input = "xMomx"; 
+    const palindromeChecker = new PalindromeChecker(); 
+
+    const result = palindromeChecker.isPalindrome(input);
+
+    expect(result).toBeTruthy();
   })
 
 
