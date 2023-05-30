@@ -5,7 +5,7 @@ Grading Checklist
 - [ ] I have tests that validate the following statements 
   - [X]"mom" returns true
   - [X]"Mom" returns true
-  - [ ]"MoM" returns true
+  - [X]"MoM" returns true
   - [ ]"Momx" returns false
   - [ ]"xMomx" returns true
   - [ ]"Was It A Rat I Saw" returns true
@@ -56,6 +56,15 @@ describe('palindrome checker', () => {
     const result = palindromeChecker.isPalindrome(input);
 
     expect(result).toBeTruthy();
+  })
+
+  it("should know that 'Momx' is not a palindrome", () => {
+    const input = "Momx"; 
+    const palindromeChecker = new PalindromeChecker(); 
+
+    const result = palindromeChecker.isPalindrome(input);
+
+    expect(result).toBeFalsy();
   })
 
 
