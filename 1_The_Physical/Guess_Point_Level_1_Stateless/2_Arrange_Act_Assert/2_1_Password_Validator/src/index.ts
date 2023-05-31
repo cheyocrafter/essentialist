@@ -6,6 +6,10 @@ export class PasswordValidator {
       errors.push({ type: 'INVALID_LENGTH_ERROR' });
     }
 
+    if (!(/[0-9]/g).test(password)) {
+      errors.push({ type: 'NO_DIGIT_ERROR' })
+    }
+
     return {
       isValid: errors.length === 0,
       errors: errors, 

@@ -17,6 +17,17 @@ describe('password validator', () => {
     });
   });
 
+  it('should return true because "Passw4" contains at least one digit', () => {
+    const result = PasswordValidator.validate("Passw4")
+    expect(result.errors).toHaveLength(0);
+    expect(result.isValid).toBeTruthy();
+  }); 
 
+  it('should return false because "Password" does not contain at least one digit', () => {
+    const result = PasswordValidator.validate("Password")
+    expect(result.isValid).toBeFalsy();
+    expect(result.errors).toHaveLength(1);
+    expect(result.errors).toStrictEqual([{ type: "NO_DIGIT_ERROR" }])
+  }); 
 
 });
