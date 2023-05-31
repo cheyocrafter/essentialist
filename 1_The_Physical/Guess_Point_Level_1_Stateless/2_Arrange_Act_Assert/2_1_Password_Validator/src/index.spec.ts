@@ -30,4 +30,8 @@ describe('password validator', () => {
     expect(result.errors).toStrictEqual([{ type: "NO_DIGIT_ERROR" }])
   }); 
 
+  it('should return false because "maxwellTheBe" does not contain at least one digit', () => {
+    
+  })
+
 });
