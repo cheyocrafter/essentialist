@@ -43,7 +43,31 @@ describe('password validator', () => {
       expect(result.isValid).toBeTruthy();
       expect(result.errors).toStrictEqual([]);
     });
-
-
   });
+
+  describe('detects multiple errors', () => {
+    it('should detect that "password" does not contain an uppercase letter and at least 1 digit', () => {
+      const result = PasswordValidator.validate("password");
+      expect(result.isValid).toBeFalsy();
+      expect(result.errors).toStrictEqual(
+        [
+          { type: 'NO_DIGIT_ERROR' },
+          { type: 'NO_UPPERCASE_LETTER_ERROR' },
+        ]
+      );
+    });
+
+    it('should detect that "pass" does not contain an uppercase letter and at least 1 digit, and a valid length', () => {
+      const result = PasswordValidator.validate("pass");
+      expect(result.isValid).toBeFalsy();
+      expect(result.errors).toStrictEqual(
+        [
+          { type: 'INVALID_LENGTH_ERROR' },
+          { type: 'NO_DIGIT_ERROR' },
+          { type: 'NO_UPPERCASE_LETTER_ERROR' },
+        ]
+      );
+    });
+  })
+
 });
