@@ -15,5 +15,12 @@ describe('password validator', () => {
     expect(result.errors).toHaveLength(1);
     expect(result.errors[0].type).toMatch(/INVALID_LENGTH_ERROR/);
     expect(result.isValid).toBeFalsy(); 
-  })
-})
+  });
+
+  it('knows that "asX387484945939383779530376" is NOT between 5 and 15 characters', () => {
+    const result = PasswordValidator.validate("asX387484945939383779530376");
+    expect(result.errors).toHaveLength(1);
+    expect(result.errors[0].type).toMatch(/INVALID_LENGTH_ERROR/);
+    expect(result.isValid).toBeFalsy();
+  });
+});
