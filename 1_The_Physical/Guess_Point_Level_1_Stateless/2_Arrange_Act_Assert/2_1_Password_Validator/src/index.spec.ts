@@ -37,5 +37,13 @@ describe('password validator', () => {
       expect(result.isValid).toBeFalsy();
       expect(result.errors).toStrictEqual([{ type: 'NO_UPPERCASE_LETTER_ERROR' }]);
     });
+
+    it('should return true for "Passw0rd"', () => {
+      const result = PasswordValidator.validate("Passw0rd");
+      expect(result.isValid).toBeTruthy();
+      expect(result.errors).toStrictEqual([]);
+    });
+
+
   });
 });
