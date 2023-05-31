@@ -10,6 +10,10 @@ export class PasswordValidator {
       errors.push({ type: 'NO_DIGIT_ERROR' })
     }
 
+    if (!(/[A-Z]/g).test(password)) {
+      errors.push({ type: 'NO_UPPERCASE_LETTER_ERROR' });
+    }
+
     return {
       isValid: errors.length === 0,
       errors: errors, 
