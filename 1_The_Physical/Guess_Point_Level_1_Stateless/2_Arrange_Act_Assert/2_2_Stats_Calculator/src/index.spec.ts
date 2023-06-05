@@ -35,4 +35,11 @@ describe('stats calculator', () => {
       expect(result.count).toBe(output)
     });
   });
+
+  it('knows that the average of [1, 2, 3] is 2', () => {
+    const output = StatsCalculator.calculate([1, 2, 3]);
+    expect(output.average).toBe(2);
+  });
+
+
 });
