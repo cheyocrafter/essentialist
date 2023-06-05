@@ -13,4 +13,9 @@ describe('stats calculator', () => {
     });
   });
 
+  it('knows that 3 is the maximum value', () => {
+    const output = StatsCalculator.calculate([1, 2, 3]);
+    expect(output.max).toBe(3);
+  })
+
 });
