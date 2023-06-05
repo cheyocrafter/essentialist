@@ -1,19 +1,16 @@
 import { StatsCalculator } from './index';
 
 describe('stats calculator', () => {  
-  it('should know that `1` is the minimum value', () => {
-    const result = StatsCalculator.calculate([1, 2, 3]);
-    expect(result.min).toBe(1);
-  });
 
-  it('should know that -8 is the minimum value', () => {
-    const result = StatsCalculator.calculate([2, 4, 21, -8, 53, 40]);
-    expect(result.min).toBe(-8);
-  });
-
-  it('should know that 117 is the minimum value', () => {
-    const result = StatsCalculator.calculate([117]);
-    expect(result.min).toBe(117);
+  describe('it returns the minimum value', () => {
+    it.each([
+      { input: [1, 2, 3], output: 1},
+      { input: [2, 4, 21, -8, 53, 40], output: -8},
+      { input: [117], output: 117},
+    ])('it knows that $output is the minimum value', ({ input, output }) => {
+      const result = StatsCalculator.calculate(input)
+      expect(result.min).toBe(output)
+    });
   });
 
 });
