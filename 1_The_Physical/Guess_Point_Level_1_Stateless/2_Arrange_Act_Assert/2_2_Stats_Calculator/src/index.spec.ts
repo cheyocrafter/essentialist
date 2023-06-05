@@ -11,4 +11,9 @@ describe('stats calculator', () => {
     expect(result.min).toBe(-8);
   });
 
+  it('should know that 117 is the minimum value', () => {
+    const result = StatsCalculator.calculate([117]);
+    expect(result.min).toBe(117);
+  });
+
 });
