@@ -36,20 +36,14 @@ describe('stats calculator', () => {
     });
   });
 
-  it('knows that the average of [1, 2, 3] is 2', () => {
-    const output = StatsCalculator.calculate([1, 2, 3]);
-    expect(output.average).toBe(2);
+  describe('it returns the average of a sequence', () => {
+    it.each([
+      { input: [1, 2, 3], output: 2},
+      { input: [2, 4, 21, -8, 53, 40], output: 18.666666666666668},
+      { input: [117, 118], output: 117.5},
+    ])('it knows that the average of $input is $output', ({ input, output }) => {
+      const result = StatsCalculator.calculate(input)
+      expect(result.average).toBe(output)
+    });
   });
-
-  it('knows that the average of [2, 4, 21, -8, 53, 40] is 18.666666666666668', () => {
-    const output = StatsCalculator.calculate([2, 4, 21, -8, 53, 40]);
-    expect(output.average).toBe(18.666666666666668);
-  });
-
-  it('knows that the average of [117, 118] is 117.5', () => {
-    const output = StatsCalculator.calculate([117, 118]);
-    expect(output.average).toBe(117.5);
-  });
-
-
 });
