@@ -41,5 +41,15 @@ describe('stats calculator', () => {
     expect(output.average).toBe(2);
   });
 
+  it('knows that the average of [2, 4, 21, -8, 53, 40] is 18.666666666666668', () => {
+    const output = StatsCalculator.calculate([2, 4, 21, -8, 53, 40]);
+    expect(output.average).toBe(18.666666666666668);
+  });
+
+  it('knows that the average of [117, 118] is 117.5', () => {
+    const output = StatsCalculator.calculate([117, 118]);
+    expect(output.average).toBe(117.5);
+  });
+
 
 });
