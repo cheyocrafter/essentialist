@@ -24,6 +24,9 @@ describe('stats calculator', () => {
     });
   });
 
+  it('knows that [1, 2, 3] has 3 items', () => {
+    const result = StatsCalculator.calculate([1, 2, 3]);
+    expect(result.count).toBe(3)
+  });
 
-  
 });
