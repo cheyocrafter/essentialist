@@ -24,19 +24,15 @@ describe('stats calculator', () => {
     });
   });
 
-  it('knows that [1, 2, 3] has 3 items', () => {
-    const result = StatsCalculator.calculate([1, 2, 3]);
-    expect(result.count).toBe(3)
+  
+  describe('it returns the count of items', () => {
+    it.each([
+      { input: [1, 2, 3], output: 3},
+      { input: [2, 4, 21, -8, 53, 40], output: 6},
+      { input: [117, 118], output: 2},
+    ])('it knows that $input has $input items', ({ input, output }) => {
+      const result = StatsCalculator.calculate(input)
+      expect(result.count).toBe(output)
+    });
   });
-
-  it('knows that [2, 4, 21, -8, 53, 40] has 6 items', () => {
-    const result = StatsCalculator.calculate([2, 4, 21, -8, 53, 40]);
-    expect(result.count).toBe(6)
-  });
-
-  it('knows that [117, 118] has 2 items', () => {
-    const result = StatsCalculator.calculate([117, 118]);
-    expect(result.count).toBe(2);
-  });
-
 });
