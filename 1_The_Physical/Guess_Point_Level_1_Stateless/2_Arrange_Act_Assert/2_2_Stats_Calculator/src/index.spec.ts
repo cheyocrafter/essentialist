@@ -29,4 +29,9 @@ describe('stats calculator', () => {
     expect(result.count).toBe(3)
   });
 
+  it('knows that [2, 4, 21, -8, 53, 40] has 6 items', () => {
+    const result = StatsCalculator.calculate([2, 4, 21, -8, 53, 40]);
+    expect(result.count).toBe(6)
+  });
+
 });
