@@ -34,4 +34,9 @@ describe('stats calculator', () => {
     expect(result.count).toBe(6)
   });
 
+  it('knows that [117, 118] has 2 items', () => {
+    const result = StatsCalculator.calculate([117, 118]);
+    expect(result.count).toBe(2);
+  });
+
 });
