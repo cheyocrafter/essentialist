@@ -20,5 +20,6 @@ describe('military time validator', () => {
     ('it knows that "%s" is valid', (input) => {
       expect(validateTimeRange(input)).toBe(true);
     });
-  })
+  });
+  
 });
