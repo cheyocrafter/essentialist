@@ -11,15 +11,14 @@ describe('military time validator', () => {
     });
   });
 
-  it('it knows that "23:00 - 23:56" is valid', () => {
-    const input = "23:00 - 23:56";
-    const result = validateTimeRange(input);
-    expect(result).toBeTruthy();
-  });
-
-  it('it knows that "01:12 - 14:32" is valid', () => {
-    const input = "01:12 - 14:32";
-    const result = validateTimeRange(input);
-    expect(result).toBeTruthy();
-  });
+  describe('valid time range', () => {
+    it.each([
+      ["23:00 - 23:56"],
+      ["01:12 - 14:32"],
+      ["22:00 - 23:12"],
+    ])
+    ('it knows that "%s" is valid', (input) => {
+      expect(validateTimeRange(input)).toBe(true);
+    });
+  })
 });
