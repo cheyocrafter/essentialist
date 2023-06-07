@@ -6,4 +6,10 @@ describe('military time validator', () => {
     const result = validateTimeRange(input);
     expect(result).toBeFalsy();
   });
+
+  it('it knows that "23:00 - 23:56" is valid', () => {
+    const input = "23:00 - 23:56";
+    const result = validateTimeRange(input);
+    expect(result).toBeTruthy();
+  });
 });
