@@ -19,7 +19,7 @@
   - it is well formatted: the `start time` and the `end time` are separated by a `' - '` string
 - it knows that a military time range is invalid when: 
   - the `end time` is greater than the `start time`
-  - any other type of formatting that does not follow the pattern `<[0-23]>:<0-23> - <[0-23]>:<[0-23]>`
+  - any other type of formatting that does not follow the pattern `<[0-23]>:<0-59> - <[0-23]>:<[0-59]>`
 ### Examples 
 #### Valid time range (yes)
 Example 1
