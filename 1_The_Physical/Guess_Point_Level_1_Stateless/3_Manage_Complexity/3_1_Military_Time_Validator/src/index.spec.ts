@@ -7,6 +7,12 @@ describe('military time validator', () => {
     expect(result).toBeFalsy();
   });
 
+  it('it knows that "23:59 - 23:40" is invalid - wrong order', () => {
+    const input = "23:59 - 23:40";
+    const result = validateTimeRange(input);
+    expect(result).toBeFalsy();
+  });
+
   it('it knows that "23:00 - 23:56" is valid', () => {
     const input = "23:00 - 23:56";
     const result = validateTimeRange(input);
