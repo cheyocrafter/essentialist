@@ -21,7 +21,7 @@ const hasCorrectOrder = (startTime: string, endTime: string): boolean => {
 
 export const validateTimeRange = (timeRange: string): boolean => {
   const [startTime, endTime] = timeRange.split(' - ');
-  
+
   return (
     hasCorrectOrder(startTime, endTime) && 
     hasValidTimePattern(startTime) && 
