@@ -1,25 +1,27 @@
+const parseTime = (time: string): number[] => {
+  return time.split(":").map(Number)
+};
+
 const hasValidTimePattern = (time: string) => {
-  const [hours, minutes] = time.split(":").map(Number);
+  const [hours, minutes] = parseTime(time)
   if (!(hours >= 0 && hours <= 23)) return false; 
   if (!(minutes >= 0 && minutes <= 59)) return false;
   return true;
 }
 
 const hasCorrectOrder = (startTime: string, endTime: string): boolean => {
-  const [startHours, startMinutes] = startTime.split(":").map(Number);
-  const [endHours, endMinutes] = endTime.split(":").map(Number);
+  const [startHours, startMinutes] = parseTime(startTime);
+  const [endHours, endMinutes] = parseTime(endTime);
 
-  if (startHours <= endHours) {
-    if (startMinutes <= endMinutes) {
-      return true; 
-    }
-  }
+  const hasValidStartHours = (startHours <= endHours);
+  const hasValidStartMinutes = (startMinutes <= endMinutes);
 
-  return false; 
+  return hasValidStartHours && hasValidStartMinutes;
 }
 
-export const validateTimeRange = (timeRange: string) => {
+export const validateTimeRange = (timeRange: string): boolean => {
   const [startTime, endTime] = timeRange.split(' - ');
+  
   return (
     hasCorrectOrder(startTime, endTime) && 
     hasValidTimePattern(startTime) && 
