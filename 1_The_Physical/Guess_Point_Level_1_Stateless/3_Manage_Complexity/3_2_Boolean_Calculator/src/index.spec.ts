@@ -1,16 +1,13 @@
 import { booleanCalculator } from './index';
 
 describe('boolean calculator', () => {
-  it('evaluates "TRUE" as true', () => {
-    const expression = "TRUE";
-    const result = booleanCalculator(expression);
-    expect(result).toBe(true);
-  });
-
-  it('evaluates "FALSE" as false', () => {
-    const expression = "FALSE";
-    const result = booleanCalculator(expression);
-    expect(result).toBe(false);
+  describe("single value", () => {
+    it.each([
+      ["TRUE", true],
+      ["FALSE", false],
+    ])('evaluates "%s" as %s', (input: string, output: boolean) => {
+      expect(booleanCalculator(input)).toBe(output);
+    })
   });
 
   it('evaluates "NOT TRUE" as false', () => {
