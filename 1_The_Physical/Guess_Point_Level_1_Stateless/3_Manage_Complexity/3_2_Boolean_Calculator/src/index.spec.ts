@@ -19,28 +19,13 @@ describe('boolean calculator', () => {
     })
   })
 
-  it('evaluates "NOT TRUE" as false', () => {
-    const expression = "NOT TRUE";
-    const result = booleanCalculator(expression);
-    expect(result).toBe(false);
-  });
-
-  it('evaluates "NOT FALSE" as true', () => {
-    const expression = "NOT FALSE";
-    const result = booleanCalculator(expression);
-    expect(result).toBe(true);
-  });
-
-  it('evaluates "TRUE AND FALSE" as false', () => {
-    const expression = "TRUE AND FALSE";
-    const result = booleanCalculator(expression);
-    expect(result).toBe(false);
-  });
-
-  it('evaluates "TRUE AND TRUE" as true', () => {
-    const expression = "TRUE AND TRUE";
-    const result = booleanCalculator(expression);
-    expect(result).toBe(true);
+  describe('AND operator', () => {
+    it.each([
+      ["TRUE AND FALSE", false],
+      ["TRUE AND TRUE", true],
+    ])('evaluates "%s" as %s', (input: string, output: boolean) => {
+      expect(booleanCalculator(input)).toBe(output);
+    });
   });
 
   it('evaluates "TRUE OR TRUE" as true', () => {
