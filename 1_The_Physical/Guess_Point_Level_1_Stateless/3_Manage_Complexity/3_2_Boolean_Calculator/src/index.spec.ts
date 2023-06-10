@@ -48,18 +48,14 @@ describe('boolean calculator', () => {
       expect(booleanCalculator(input)).toBe(output);
     });
   });
-  
 
-  it('evaluates "(TRUE OR TRUE OR TRUE) AND FALSE" as false', () => {
-    const expression = "(TRUE OR TRUE OR TRUE) AND FALSE";
-    const result = booleanCalculator(expression);
-    expect(result).toBe(false);
-  });
-  
-  it('evaluates "NOT (TRUE AND TRUE)" as false', () => {
-    const expression = "(TRUE OR TRUE OR TRUE) AND FALSE";
-    const result = booleanCalculator(expression);
-    expect(result).toBe(false);
+  describe('Parenthesis operator', () => {
+    it.each([
+      ["(TRUE OR TRUE OR TRUE) AND FALSE", false],
+      ["NOT (TRUE AND TRUE)", false],
+    ])('evaluates "%s" as %s', (input: string, output: boolean) => {
+      expect(booleanCalculator(input)).toBe(output);
+    });
   });
 
 });
