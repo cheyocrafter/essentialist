@@ -10,6 +10,15 @@ describe('boolean calculator', () => {
     })
   });
 
+  describe('NOT operator', () => {
+    it.each([
+      ["NOT TRUE", false],
+      ["NOT FALSE", true],
+    ])('evaluates "%s" as %s', (input: string, output: boolean) => {
+      expect(booleanCalculator(input)).toBe(output);
+    })
+  })
+
   it('evaluates "NOT TRUE" as false', () => {
     const expression = "NOT TRUE";
     const result = booleanCalculator(expression);
