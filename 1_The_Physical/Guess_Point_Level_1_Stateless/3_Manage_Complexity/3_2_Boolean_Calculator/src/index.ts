@@ -28,16 +28,43 @@ const applyOrAndOperation = (tokens: string[]): boolean => {
   return tokens[0] === "TRUE";
 };
 
+const applyNotExpression = (tokens: string[]): string[] => {
+  let index = 0;
+  while (index < tokens.length) {
+    const currentToken = tokens[index];
+
+    if (currentToken === "NOT") {
+      const nextToken = tokens[index + 1];
+
+      if (nextToken === "TRUE") {
+        tokens[index + 1] = "FALSE";
+      } else if (nextToken === "FALSE") {
+        tokens[index + 1] = "TRUE";
+      }
+
+      tokens.splice(index, 1);
+    } else {
+      index++;
+    }
+  }
+
+  return tokens;
+}
+
 
 export const booleanCalculator = (expression: string) => {
+
+  if (expression.includes("NOT")) {
+    const tokens = tokenize(expression, " ");
+    let result = applyNotExpression(tokens);
+    expression = result.join(' ');
+  }
 
   if (expression.includes("AND") || expression.includes("OR")) {
     const tokens = tokenize(expression, " ");
     return applyOrAndOperation(tokens)
   }
 
-  if (expression === "NOT FALSE") return true;
-  if (expression === "NOT TRUE") return false; 
   if (expression === "TRUE") return true;
   if (expression === "FALSE") return false;
 };
