@@ -1,6 +1,58 @@
-const tokenize = (expression: string, delimiter: string): string[] => {
-  return expression.split(delimiter)
+const tokenize = (expression: string, delimiter: string) => {
+  return expression.split(delimiter);
 }
+
+const applyParensOperation = (expression: string): string => {
+  let result = expression;
+
+  let startIndex = result.lastIndexOf("(");
+  let endIndex = result.indexOf(")", startIndex);
+
+  while (startIndex !== -1 && endIndex !== -1) {
+    const subExpression = result.substring(startIndex + 1, endIndex);
+    const subResult = evaluateExpression(subExpression);
+
+    const beforeParens = result.substring(0, startIndex);
+    const afterParens = result.substring(endIndex + 1);
+
+    result = `${beforeParens}${subResult}${afterParens}`;
+
+    startIndex = result.lastIndexOf("(");
+    endIndex = result.indexOf(")", startIndex);
+  }
+
+  return result;
+};
+
+const applyNotOperation = (tokens: string[]): string => {
+  let index = 0;
+  while (index < tokens.length) {
+    const currentToken = tokens[index];
+
+    if (currentToken === "NOT") {
+      const nextToken = tokens[index + 1];
+
+      if (nextToken === "TRUE") {
+        tokens[index + 1] = "FALSE";
+      } else if (nextToken === "FALSE") {
+        tokens[index + 1] = "TRUE";
+      }
+
+      tokens.splice(index, 1);
+    } else {
+      index++;
+    }
+  }
+
+  return tokens.join(' ');
+}
+
+const evaluateExpression = (expression: string): string => {
+  expression = applyParensOperation(expression);
+  let tokens = tokenize(expression, " ")
+  tokens = tokenize(applyNotOperation(tokens), ' ');
+  return applyOrAndOperation(tokens) ? "TRUE" : "FALSE";
+};
 
 const applyAndOperation = (values: string[]): boolean => {
   return values.every((value) => value === "TRUE");
@@ -28,43 +80,6 @@ const applyOrAndOperation = (tokens: string[]): boolean => {
   return tokens[0] === "TRUE";
 };
 
-const applyNotExpression = (tokens: string[]): string[] => {
-  let index = 0;
-  while (index < tokens.length) {
-    const currentToken = tokens[index];
-
-    if (currentToken === "NOT") {
-      const nextToken = tokens[index + 1];
-
-      if (nextToken === "TRUE") {
-        tokens[index + 1] = "FALSE";
-      } else if (nextToken === "FALSE") {
-        tokens[index + 1] = "TRUE";
-      }
-
-      tokens.splice(index, 1);
-    } else {
-      index++;
-    }
-  }
-
-  return tokens;
-}
-
-
-export const booleanCalculator = (expression: string) => {
-
-  if (expression.includes("NOT")) {
-    const tokens = tokenize(expression, " ");
-    let result = applyNotExpression(tokens);
-    expression = result.join(' ');
-  }
-
-  if (expression.includes("AND") || expression.includes("OR")) {
-    const tokens = tokenize(expression, " ");
-    return applyOrAndOperation(tokens)
-  }
-
-  if (expression === "TRUE") return true;
-  if (expression === "FALSE") return false;
+export const booleanCalculator = (expression: string): boolean => {
+  return evaluateExpression(expression) === "TRUE";
 };
