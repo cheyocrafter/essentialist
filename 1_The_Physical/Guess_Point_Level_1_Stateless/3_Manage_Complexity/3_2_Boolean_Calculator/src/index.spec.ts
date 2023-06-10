@@ -13,6 +13,10 @@ describe('boolean calculator', () => {
     expect(result).toBe(false);
   });
 
-
+  it('evaluate "NOT TRUE" as false', () => {
+    const expression = "NOT TRUE";
+    const result = booleanCalculator(expression);
+    expect(result).toBe(false);
+  })
 
 });

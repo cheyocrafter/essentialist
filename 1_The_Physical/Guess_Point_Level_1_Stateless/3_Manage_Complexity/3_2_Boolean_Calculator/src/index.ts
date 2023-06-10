@@ -1,5 +1,7 @@
 
 
 export const booleanCalculator = (expression: string) => {
-  return expression === "TRUE" ? true : false;
+  if (expression === "NOT TRUE") return false; 
+  if (expression === "TRUE") return true;
+  if (expression === "FALSE") return false;
 };
