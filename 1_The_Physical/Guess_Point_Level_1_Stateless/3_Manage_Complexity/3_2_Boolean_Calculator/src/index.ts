@@ -5,6 +5,11 @@ export const booleanCalculator = (expression: string) => {
     return expression
       .split(" AND ")
       .every(operator => operator === "TRUE");
+  } 
+  if (expression.includes("OR")) {
+    return expression
+      .split(" OR ")
+      .some(operator => operator === "TRUE");
   }
   if (expression === "NOT FALSE") return true;
   if (expression === "NOT TRUE") return false; 
