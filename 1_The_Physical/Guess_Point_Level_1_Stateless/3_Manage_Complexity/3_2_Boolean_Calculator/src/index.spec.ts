@@ -38,19 +38,17 @@ describe('boolean calculator', () => {
       expect(booleanCalculator(input)).toBe(output);
     });
   });
+
   
-  it('evaluates "TRUE OR TRUE OR TRUE AND FALSE" as true', () => {
-    const expression = "TRUE OR TRUE OR TRUE AND FALSE";
-    const result = booleanCalculator(expression);
-    expect(result).toBe(true);
+  describe('Combination of operators', () => {
+    it.each([
+      ["TRUE OR TRUE OR TRUE AND FALSE", true],
+      ["TRUE OR FALSE AND NOT FALSE", true],
+    ])('evaluates "%s" as %s', (input: string, output: boolean) => {
+      expect(booleanCalculator(input)).toBe(output);
+    });
   });
-
-  it('evaluates "TRUE OR FALSE AND NOT FALSE" as true', () => {
-    const expression = "TRUE OR FALSE AND NOT FALSE";
-    const result = booleanCalculator(expression);
-    expect(result).toBe(true);
-  });
-
+  
 
   it('evaluates "(TRUE OR TRUE OR TRUE) AND FALSE" as false', () => {
     const expression = "(TRUE OR TRUE OR TRUE) AND FALSE";
