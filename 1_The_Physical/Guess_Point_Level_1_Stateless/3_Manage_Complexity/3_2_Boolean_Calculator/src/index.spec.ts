@@ -54,7 +54,14 @@ describe('boolean calculator', () => {
     const result = booleanCalculator(expression);
     expect(result).toBe(true);
   });
-  // it('evaluates "(TRUE OR TRUE OR TRUE) AND FALSE" as false', () => {});
+
+
+  it('evaluates "(TRUE OR TRUE OR TRUE) AND FALSE" as true', () => {
+    const expression = "(TRUE OR TRUE OR TRUE) AND FALSE";
+    const result = booleanCalculator(expression);
+    expect(result).toBe(false);
+  });
+
   // it('evaluates "NOT (TRUE AND TRUE)" as false', () => {});
 
 });
