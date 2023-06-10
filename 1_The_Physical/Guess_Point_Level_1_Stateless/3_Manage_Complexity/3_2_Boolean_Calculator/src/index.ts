@@ -1,5 +1,5 @@
 
 
 export const booleanCalculator = (expression: string) => {
-  return true;
+  return expression === "TRUE" ? true : false;
 };
