@@ -6,4 +6,13 @@ describe('boolean calculator', () => {
     const result = booleanCalculator(expression);
     expect(result).toBe(true);
   });
+
+  it('evaluates "FALSE" as false', () => {
+    const expression = "FALSE";
+    const result = booleanCalculator(expression);
+    expect(result).toBe(false);
+  });
+
+
+
 });
