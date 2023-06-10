@@ -28,10 +28,15 @@ describe('boolean calculator', () => {
     });
   });
 
-  it('evaluates "TRUE OR TRUE" as true', () => {
-    const expression = "TRUE OR TRUE";
-    const result = booleanCalculator(expression);
-    expect(result).toBe(true);
+  describe('OR operator', () => {
+    it.each([
+      ["TRUE OR FALSE", true],
+      ["FALSE OR TRUE", true],
+      ["TRUE OR TRUE", true],
+      ["FALSE OR FALSE", false],
+    ])('evaluates "%s" as %s', (input: string, output: boolean) => {
+      expect(booleanCalculator(input)).toBe(output);
+    });
   });
   
   it('evaluates "TRUE OR TRUE OR TRUE AND FALSE" as true', () => {
